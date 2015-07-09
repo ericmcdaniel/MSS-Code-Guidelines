@@ -42,6 +42,114 @@ suffixes are clear, but just in case, here are some more details.
   ECMAScript 6 code.
 
 
+## LOGGING LEVELS
+
+This is intended to be a short developer note on guidance for logging levels.
+Exception handlers should log exceptions.
+
+
+### Background
+
+A brief synopsis of why we log and the implications for logging levels.
+
+- Hunt down bugs
+
+- Enable automated monitoring for errors and warnings and/or trigger Hipchat
+  alerts
+
+- Maintain an audit trail
+
+- Record application status
+
+- Debugging configuration issues
+
+
+#### IMPORTANT
+
+- Used sparingly
+
+- Used on production
+
+- Example: System start/restart
+
+
+#### FATAL
+
+- Used for recording a failure that prevents system from starting or shuts down
+  an application
+
+- Used on production
+
+- Triggers a DOC alert
+
+- Example: Systems becomes unusable
+
+
+#### ERROR
+
+- Records when failure occurs but system is stll usable
+
+- Used on production
+
+- Triggers a DOC alert
+
+- Example: PAL errors talking to IBIS
+
+
+#### WARNING
+
+- A scenario that indicates something is wrong with the system but does not
+  prevent system from operating correctly
+
+- Used on production
+
+- Monitored and triggers DOC if defined levels exceeded
+
+- Example: Invalid login attempts
+
+
+#### INFO
+
+- General system status— Does not indicate something is wrong
+
+- Used on production
+
+- Should be able to be enabled in production
+
+- Example: Reestablish connection to external service
+
+
+#### DEBUG
+
+- Enables developer context (stack trace and/or other context of issue) for
+  debugging a problem
+
+- Should not be used in production for performance as well as security reasons.
+
+- Example: Null pointer exception
+
+
+#### VERBOSE
+
+- Should be used for capturing detailed implementation and diagnostic level
+  detail that you might want to enable in rare situations (a more verbose INFO)
+
+- Not used in production
+
+- Touch base with your Tech Lead for this level of logging
+
+
+#### SILLY
+
+- Should be used for capturing very detailed implementation and diagnostic level
+  detail that you might want to enable in very rare situations (a more verbose
+  DEBUG)
+
+- Not used in production
+
+- Touch base with your Tech Lead for this level of logging
+
+
 ## JavaScript
 The JavaScript guidelines are based off of [idiomatic.js][idiomatic].
 
