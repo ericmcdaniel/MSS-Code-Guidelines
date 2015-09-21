@@ -22,28 +22,28 @@ We will be using:
 
 ### Idiomatic Style Manifesto
 - #### Whitespace
-    0. 4-space soft indents are required.  This means four spaces or four spaces
+    - 4-space soft indents are required.  This means four spaces or four spaces
       representing a tab.
-    0. Place 1 space before the leading brace and 1 space before the parentheses in control statements (if, else, while, for)
+    - Place 1 space before the leading brace and 1 space before the parentheses in control statements (if, else, while, for)
     ```javascript
     if (things) {
         alert('Look how nice that space is!');
     }
     ```
-    0. Place no spaces before the arguments list in a function declaration.
+    - Place no spaces before the arguments list in a function declaration.
     ```javascript
     function makeSandwich(ham, cheese, egg) {
         return ham + cheese + egg;
     }
     ```
-    0. Set off operators with spaces
+    - Set off operators with spaces
     ```javascript
     var value = a + b + c;
 
     var thirteen = 39 * 2 / 2 / 3;
 
     ```
-    0. User indendation when making long method chains (a la underscore/lodash, d3.js, etc.). Use a leading dot, which emphasizes that the line is a method call, not a new statement.
+    - User indendation when making long method chains (a la underscore/lodash, d3.js, etc.). Use a leading dot, which emphasizes that the line is a method call, not a new statement.
     ```javascript
     // bad
     var leds = stage.selectAll('.led').data(data).enter().append('svg:svg').class('led', true)
@@ -61,7 +61,7 @@ We will be using:
             .attr('transform', 'translate(' + (radius + margin) + ',' + (radius + margin) + ')')
             .call(tron.led);
     ```
-    0. Leave a blank line after blocks and before the next statement.
+    - Leave a blank line after blocks and before the next statement.
     ```javascript
     // bad
     if (foo) {
@@ -97,7 +97,7 @@ We will be using:
     return obj;
     ```
 - #### Declarations
-    0. Assign variables where you need them, but place them in a reasonable place.
+    - Assign variables where you need them, but place them in a reasonable place.
 
     *Why?* This will help others maintain context when reading long code blocks.
 
@@ -114,25 +114,25 @@ We will be using:
         }
     }
     ```
-    0. Use single quotes for strings!
+    - Use single quotes for strings!
     ```javascript
     var myNameIs = 'Slim Shady';
     ```
-    0. Object literals should look like this:
+    - Object literals should look like this:
     ```javascript
     var objectLiteral = {
         foo: 'bar',
         baz: 'qux'
     };
     ```
-    0. Milliseconds should be assigned in multiples of 1000, and always use
+    - Milliseconds should be assigned in multiples of 1000, and always use
       explicit order of operations.
     ```javascript
     var oneSecond = 1000 * 1,
         oneMinute = 1000 * 60,
         fiveMinutes = (1000 * 60) * 5;
     ```
-    0. Use a leading underscore _ when naming private properties.
+    - Use a leading underscore _ when naming private properties.
     ```javascript
     // BAD! NO!
     this._things_
@@ -145,7 +145,7 @@ We will be using:
 
 
 - #### Naming
-    0. Use camel-case for variable and function names
+    - Use camel-case for variable and function names
     ```javascript
     var thisVariableIsCamelCase = true;
 
@@ -155,7 +155,7 @@ We will be using:
         }
     }
     ```
-    0. Be descriptive with your function and variable names!
+    - Be descriptive with your function and variable names!
     ```javascript
     // BAD! wtf man
     var nState = nStateOnLoad();
@@ -163,7 +163,7 @@ We will be using:
     // GOOD!
     var navigationState = getNavigationState();
     ```
-    0. Prefix jQuery selection variables with '$'
+    - Prefix jQuery selection variables with '$'
     ```javascript
     // BAD!
     var navigationLinks = $('nav a');
@@ -173,7 +173,7 @@ We will be using:
     ```
 
 - #### Comments
-    0. Use JSDoc-style comments to describe methods and functionality
+    - Use JSDoc-style comments to describe methods and functionality
     ```javascript
     /**
      * make() returns a new element
@@ -188,7 +188,7 @@ We will be using:
         return element;
     }
     ```
-    0. Please use single line comments to describe how your code works! Debugging issues can be very difficult if it's unclear how a block of code works or what certain conditionals are for. Be kind to future devs!
+    - Please use single line comments to describe how your code works! Debugging issues can be very difficult if it's unclear how a block of code works or what certain conditionals are for. Be kind to future devs!
     ```javascript
     function make(template) {
         var $element,
@@ -207,7 +207,7 @@ We will be using:
     ```
 
 ## HTML
-0. Write clean semantic HTML5 markup.
+- Write clean semantic HTML5 markup.
 0. Use double quotes for attributes.
 0. Use proper indention.
 0. Selector Attributes
