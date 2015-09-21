@@ -206,7 +206,97 @@ We will be using:
         return element;
     }
     ```
+-#### Functions
+    - The general approach when writing a function is that any future developer (including yourself in six months) can read it like a human and know what is up. Comments should not be your crutch for sense-making- a combination of clear naming conventions, conditionals that read like sentences, and simple explanations in comments where needed will help keep code clear and maintainable. Example:
 
+    ```javascript
+    function makeSandwich(bread, meat, veggies) {
+        // check if the sandwich has veggies, has meat, and determines sandwich potential
+        var hasVeggies = Array.isArray(veggies) && veggies.length > 0,
+            hasMeat = Array.isArray(meat) && meat.length > 0,
+            weCanMakeASandwich = (bread && (hasVeggies || hasMeat)) ? true : false,
+            message = 'No dude you can\'t make a sandwich';
+
+        // sets defaults for meat and veggies
+        meat = hasMeat ? meat : [];
+        veggies = hasVeggies ? veggies : [];
+
+        // if we can make a sandwich, tell us what it is all about
+        if (weCanMakeASandwich) {
+            message = 'Mmmm about to eat a ' + bread + ', ' + meat.join(', ') + veggies.join(', ') + ' sandwich';
+        }
+
+        return message;    
+    }
+    ```
+        - We like this function for several reasons:
+            - The variable declarations contain all of the conditions we need to guarantee success.
+            - All conditionals are consolidated, in an intentional order.
+            - By using Booleans as our primary success criteria, we can write very readable execution code later on.
+            - Tweaking the names of the variables lets us have human-readable conditionals ("if we can make a sandwich").
+                - Originally, we had named this variable "canWeMakeASandwich", which, while readable, created an awkward sentence out loud.
+            - A single return statement helps us reason about what this function outputs and when.
+            - Always think about what you return- in a lot of cases, we can use this for chaining purposes.
+
+    - And now, a very very bad example:
+    ```javascript
+    function sandwich(ingredient1, ingredient2, veggies) {
+        var message = '';
+
+        // check if there is bread, or if there is only bread
+        if (typeof ingredient1 === 'undefined') {
+            message = "You can't make a sandwich without bread!";
+            return message;
+        } else if (typeof ingredient2 === 'undefined' && typeof veggies === 'undefined') {
+            message = "You can't make a sandwich with only bread!";
+            return message;
+        }
+
+        // if ingredient 2 exists but isn't an array, set it to empty
+        if (typeof ingredient2 === 'undefined' || !Array.isArray(ingredient2)) {
+            ingredient2 = [];
+        }
+
+        // if veggies exists but isn't an array, set it to empty
+        if (typeof veggies === 'undefined' || !Array.isArray(veggies)) {
+            veggies = [];
+        }
+
+        // if either ingredient 2 or veggies is an empty array
+        if (ingredient2.length === 0 && veggies.length === 0) {
+            message = "You don't have enough ingredients to make a sandwich, sir."
+            return message;
+        }
+
+        // tell user what sandwich is being made
+        message = 'Mmmm about to eat a ' + ingredient1;
+
+        // if ingredient 2 exists, add to sandwich
+        if (ingredient2.length > 0) {
+            message = message + ' ' + ingredient2.join(', ');
+        }
+
+        // if there are veggies, add to sandwich
+        if (veggies.length > 0) {
+            message = message + ' ' + veggies.join(', ');
+        }
+
+        message = message + " sandwich.";
+
+        // if the message is not an empty string, return a message
+        return message == '' ? 'No dude you can\'t make a sandwich' : message;
+    }
+    ```
+
+        - Some notes on this thing:
+            - First, sorry.
+            - All of the conditionals you see were 'conditional' on our understanding of the parameters needed for the function to succeed. tldr; we started with one, and quickly ballooned into the tangled web of logic.
+            - While this function returns a slew of "useful" error messages, the basics of "can i make a sandwich" do not require such verbose treatment. tldr; KEEP IT SIMPLE
+            - The first fifteen some odd lines of conditionals in this function were accomplished in FOUR in the first function. This was done by creating readable, boolean variables to keep track of the essential information needed to run the function.
+            - Using poorly named variables, and doing explicit checks in a sequence of if/else statments, it is very easy to lost context for wtf is happening.
+            - Assembling the message over many lines means that any future updates to the output of this function will most likely break the meaning.
+            - Many return statements makes it difficult to tell when/if the function will stop executing.
+            - Comments! The comments in this function do not add any value, mostly describing the exact code that follows. Sometimes not even that :)
 ## HTML
 - #### Semantic Tags:
 Use semantic tags in the way they were intended!  
