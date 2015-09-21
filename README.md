@@ -40,7 +40,7 @@ We will be using:
     ```javascript
     var value = a + b + c;
 
-    var thirteen = 39 * 2 / 2 / 3;
+    var thirteen = (39 * 2) / 6;
 
     ```
     - User indendation when making long method chains (a la underscore/lodash, d3.js, etc.). Use a leading dot, which emphasizes that the line is a method call, not a new statement.
@@ -340,8 +340,10 @@ Here is a brief glossary of terms:
     - **Always** use proper indentation (keep your structure sane!)
     - **Always** make your html human-readable
     - **Never** use an #id for styling hooks
-    - **Never** use **&lt;table&gt;**s for layout
-
+    - **Never** use **tables** for layout
+    - Closing `<li>` elements.
+      `<li>` elements should not be closed. [Further reading on this inline-block
+      issue.][inline]
     - Each new tag should exist on its own line!
     ```html
     <!-- BAD! NO! -->
@@ -362,21 +364,28 @@ Here is a brief glossary of terms:
         </section>
     </div>
     ```
-    - In a block of html, insert empty lines after tags within the same block. No new line
-    should exist after the parent opening tag, or the before the parent closing tag.  
+    - Separate independent but loosely related snippets of markup with a single empty line, for example:
 
         **EXCEPTION:** For inline block styling, items may need to live on the same line. Acceptable
         deviance is inserting html comments to eliminate the inline-block space.
 
     ```html
-    <!-- TOO BUNCHED UP DUDE -->
+    <!-- THIS IS FINE, SINCE THESE TITLES AND PARAGRAPH ARE RELATED -->
     <div class="thing">
         <h1>Title</h1>
         <h2>Title 2</h2>
         <p>Things</p>
     </div>
 
-    <!-- TOO SPACED OUT DUDE -->
+    <!-- THIS IS ALSO FINE, GROUPS HEADLINES TOGETHER, AND SEPARATES THE PARAGRAPH -->
+    <div class="thing">
+        <h1>Title</h1>
+        <h2>Title 2</h2>
+
+        <p>Things</p>
+    </div>
+
+    <!-- THIS IS NOT FINE! DISTINGUISHES THESE ELEMENTS UNNECESSARILY -->
     <div class="thing">
 
         <h1>Title</h1>
@@ -387,18 +396,21 @@ Here is a brief glossary of terms:
 
     </div>
 
-    <!-- THIS LOOKS GREAT -->
+    <!-- SEPARATES LARGER "CHUNKS" OF HTML FOR EASE OF TRACKING -->
     <div class="thing">
-        <h1>Title</h1>
+        <nav>
+            <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+        </nav>
 
-        <h2>Title 2</h2>
+        <h2>Title</h2>
 
-        <p>Things</p>
+        <figure>
+            <img src="image.jpg"/>
+            <figcaption>Caption for the image</figcaption>
+        </figure>
     </div>
     ```
-    - Closing `<li>` elements.
-      `<li>` elements should not be closed. [Further reading on this inline-block
-      issue.][inline]
 
 ## CSS / Sass
 0. The CSS / Sass guidelines are based off of [csswizardry/CSS-Guidelines][css].
