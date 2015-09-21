@@ -282,11 +282,15 @@ Here is a brief glossary of terms:
 
         <article>
             <h2>The Most Important Article</h2>
+
             <figure>
                 <img src="/someimage.jpg" />
+
                 <figcaption>Fig. 1 - This image explains everything!</figcaption>
             </figure>
+
             <cite>By Antonio Banderas</cite>
+
             <p>
                 This is the article copy. It's pretty short because
                 this is an example, and not for the internet at large.
