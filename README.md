@@ -363,8 +363,7 @@ Here is a brief glossary of terms:
     </div>
     ```
     - In a block of html, insert empty lines after tags within the same block. No new line
-    should exist after the parent opening tag, or the before the parent closing tag.
-
+    should exist after the parent opening tag, or the before the parent closing tag.  
     **EXCEPTION:** For inline block styling, items may need to live on the same line. Acceptable
     deviance is inserting html comments to eliminate the inline-block space.
 
