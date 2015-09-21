@@ -26,15 +26,15 @@ We will be using:
       representing a tab.
     0. Place 1 space before the leading brace and 1 space before the parentheses in control statements (if, else, while, for)
     ```javascript
-        if (things) {
-            alert('Look how nice that space is!');
-        }
+    if (things) {
+        alert('Look how nice that space is!');
+    }
     ```
     0. Place no spaces before the arguments list in a function declaration.
     ```javascript
-        function makeSandwich(ham, cheese, egg) {
-            return ham + cheese + egg;
-        }
+    function makeSandwich(ham, cheese, egg) {
+        return ham + cheese + egg;
+    }
     ```
     0. Set off operators with spaces
     ```javascript
@@ -45,56 +45,56 @@ We will be using:
     ```
     0. User indendation when making long method chains (a la underscore/lodash, d3.js, etc.). Use a leading dot, which emphasizes that the line is a method call, not a new statement.
     ```javascript
-        // bad
-        var leds = stage.selectAll('.led').data(data).enter().append('svg:svg').class('led', true)
-                .attr('width', (radius + margin) * 2).append('svg:g')
-                .attr('transform', 'translate(' + (radius + margin) + ',' + (radius + margin) + ')')
-                .call(tron.led);
+    // bad
+    var leds = stage.selectAll('.led').data(data).enter().append('svg:svg').class('led', true)
+            .attr('width', (radius + margin) * 2).append('svg:g')
+            .attr('transform', 'translate(' + (radius + margin) + ',' + (radius + margin) + ')')
+            .call(tron.led);
 
-        // good
-        var leds = stage.selectAll('.led')
-                .data(data)
-                .enter().append('svg:svg')
-                .classed('led', true)
-                .attr('width', (radius + margin) * 2)
-                .append('svg:g')
-                .attr('transform', 'translate(' + (radius + margin) + ',' + (radius + margin) + ')')
-                .call(tron.led);
+    // good
+    var leds = stage.selectAll('.led')
+            .data(data)
+            .enter().append('svg:svg')
+            .classed('led', true)
+            .attr('width', (radius + margin) * 2)
+            .append('svg:g')
+            .attr('transform', 'translate(' + (radius + margin) + ',' + (radius + margin) + ')')
+            .call(tron.led);
     ```
     0. Leave a blank line after blocks and before the next statement.
     ```javascript
-        // bad
-        if (foo) {
-            return bar;
-        }
-        return baz;
+    // bad
+    if (foo) {
+        return bar;
+    }
+    return baz;
 
-        // good
-        if (foo) {
-            return bar;
-        }
+    // good
+    if (foo) {
+        return bar;
+    }
 
-        return baz;
+    return baz;
 
-        // bad
-        var obj = {
-            foo() {
-            },
-            bar() {
-            },
-        };
-        return obj;
+    // bad
+    var obj = {
+        foo() {
+        },
+        bar() {
+        },
+    };
+    return obj;
 
-        // good
-        var obj = {
-            foo() {
-               },
+    // good
+    var obj = {
+        foo() {
+           },
 
-            bar() {
-            },
-        };
+        bar() {
+        },
+    };
 
-        return obj;
+    return obj;
     ```
 - #### Declarations
     0. Assign variables where you need them, but place them in a reasonable place.
@@ -102,17 +102,17 @@ We will be using:
     *Why?* This will help others maintain context when reading long code blocks.
 
     ```javascript
-        function doTwoThings() {
-            var thingone = 1;
+    function doTwoThings() {
+        var thingone = 1;
 
+        thingone++;
+
+        var thingtwo = true;
+
+        if (thingtwo) {
             thingone++;
-
-            var thingtwo = true;
-
-            if (thingtwo) {
-                thingone++;
-            }
         }
+    }
     ```
     0. Use single quotes for strings!
     ```javascript
@@ -120,17 +120,17 @@ We will be using:
     ```
     0. Object literals should look like this:
     ```javascript
-        var objectLiteral = {
-            foo: 'bar',
-            baz: 'qux'
-        };
+    var objectLiteral = {
+        foo: 'bar',
+        baz: 'qux'
+    };
     ```
     0. Milliseconds should be assigned in multiples of 1000, and always use
       explicit order of operations.
     ```javascript
-        var oneSecond = 1000 * 1,
-            oneMinute = 1000 * 60,
-            fiveMinutes = (1000 * 60) * 5;
+    var oneSecond = 1000 * 1,
+        oneMinute = 1000 * 60,
+        fiveMinutes = (1000 * 60) * 5;
     ```
     0. Use a leading underscore _ when naming private properties.
     ```javascript
@@ -147,18 +147,18 @@ We will be using:
 - #### Naming
     0. Use camel-case for variable and function names
     ```javascript
-        var thisVariableIsCamelCase = true;
+    var thisVariableIsCamelCase = true;
 
-        function doSomethingGreat(isGreat) {
-            if (isGreat) {
-                alert('Pretty good!');
-            }
+    function doSomethingGreat(isGreat) {
+        if (isGreat) {
+            alert('Pretty good!');
         }
+    }
     ```
     0. Be descriptive with your function and variable names!
     ```javascript
     // BAD! wtf man
-    var nstate = nStateOnLoad();
+    var nState = nStateOnLoad();
 
     // GOOD!
     var navigationState = getNavigationState();
@@ -175,35 +175,35 @@ We will be using:
 - #### Comments
     0. Use JSDoc-style comments to describe methods and functionality
     ```javascript
-        /**
-         * make() returns a new element
-         * based on the passed in tag
-         *
-         * @param {String} tag
-         * @return {Element} element
-         */
+    /**
+     * make() returns a new element
+     * based on the passed in tag
+     *
+     * @param {String} tag
+     * @return {Element} element
+     */
 
-         function make(tag) {
-             // some code
-             return element;
-         }
+    function make(tag) {
+        // some code
+        return element;
+    }
     ```
     0. Please use single line comments to describe how your code works! Debugging issues can be very difficult if it's unclear how a block of code works or what certain conditionals are for. Be kind to future devs!
     ```javascript
-        function make(template) {
-            var $element,
-                isFancy;
+    function make(template) {
+        var $element,
+            isFancy;
 
-            // first, create a jQuery instance of the tag passed in
-            $element = $(template);
+        // first, create a jQuery instance of the tag passed in
+        $element = $(template);
 
-            if (isFancy) {
-                // if the element is supposed to be fancy, add a class
-                $element.addClass('fancy');
-            }
-
-            return element;
+        if (isFancy) {
+            // if the element is supposed to be fancy, add a class
+            $element.addClass('fancy');
         }
+
+        return element;
+    }
     ```
 
 ## HTML
