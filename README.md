@@ -3,45 +3,6 @@ Version 1.3.0
 
 ![I honestly didn't think you could even USE emoji in variable names. Or that there were so many different crying ones.](http://imgs.xkcd.com/comics/code_quality.png)
 
-
-## Contributors
-**YOU!** - please contribute to these code guidelines! If you have any
-suggestions for improvement to these guidelines, *[create an issue][issue]* to
-discuss it or *create a [pull request][pr]* with your changes and discussion
-will occur on that PR.  Also review the [contributing guidelines](https://github.com/TurnerBroadcasting/mss-code-guidelines/blob/master/CONTRIBUTING.md).
-
-
-### Original Authors
-- James Young [@jamsyoung](http://twitter.com/jamsyoung), [github](https://github.com/jamsyoung)
-- Matt Crutchfield [@mtcrutch](https://twitter.com/mtcrutch), [github](https://github.com/mtcrutch)
-
-
-## Conflict Resolution
-We have included [JSHint][jshint] and [JSCS][jscs] RC files in this repository
-to validate javascript code against these guidelines.  When something is
-questioned, these files will always win.  When in doubt, run JSHint and JSCS
-with the `.jshintrc` and `.jscsrc` files in place and see if they find any
-problems.  It is recommended that you find plugins for your editor of choice to
-always validate your code against these files.
-
-### Regarding the multiple suffixed files
-There are several `.jscs` and `.jshintrc` files with suffixes in this repo.  It
-is up to you to choose the most appropriate one for your project.  Hopefully the
-suffixes are clear, but just in case, here are some more details.
-
-- **.jscs**: A JavaScript Code Style config file for ECMAScript 5 code.
-
-- **.jscs-es6**: A JavaScript Code Style config file for ECMAScript 6 code.
-
-- **.jshintrc-browser**: A JS Hint config file for browser based ECMAScript 5
-  code.
-
-- **.jshintrc-node**: A JS Hint config file for NodeJS 0.10.x ECMAScript 5 code.
-
-- **.jshintrc-node-es6**: A JS Hint config file for NodeJS 0.11.x+ and IO.js
-  ECMAScript 6 code.
-
-
 ## JavaScript
 The JavaScript guidelines are based off of [idiomatic.js][idiomatic].
 
@@ -60,52 +21,190 @@ We will be using:
 
 
 ### Idiomatic Style Manifesto
-0. Whitespace
-    - 4-space soft indents are required.  This means four spaces or four spaces
+- #### Whitespace
+    0. 4-space soft indents are required.  This means four spaces or four spaces
       representing a tab.
+    0. Place 1 space before the leading brace and 1 space before the parentheses in control statements (if, else, while, for)
+    ```javascript
+        if (things) {
+            alert('Look how nice that space is!');
+        }
+    ```
+    0. Place no spaces before the arguments list in a function declaration.
+    ```javascript
+        function makeSandwich(ham, cheese, egg) {
+            return ham + cheese + egg;
+        }
+    ```
+    0. Set off operators with spaces
+    ```javascript
+    var value = a + b + c;
 
-0. Beautiful Syntax
-    - 2.A - 2.C should not have `inner-space`.  Refer to 2.D for a syntax
-      without `inner-space`.  Here is an example.
-      ```javascript
-      function foo(bar, baz) {
-          var qux = bar + baz;
+    var thirteen = 39 * 2 / 2 / 3;
 
-          for (i = 0; i < 10; i++) {
-              console.log(qux);
-          }
+    ```
+    0. User indendation when making long method chains (a la underscore/lodash, d3.js, etc.). Use a leading dot, which emphasizes that the line is a method call, not a new statement.
+    ```javascript
+        // bad
+        var leds = stage.selectAll('.led').data(data).enter().append('svg:svg').class('led', true)
+                .attr('width', (radius + margin) * 2).append('svg:g')
+                .attr('transform', 'translate(' + (radius + margin) + ',' + (radius + margin) + ')')
+                .call(tron.led);
 
-          if (bar === baz) {
-              qux = bar * baz;
-          } else {
-              qux = bar / baz;
-          }
+        // good
+        var leds = stage.selectAll('.led')
+                .data(data)
+                .enter().append('svg:svg')
+                .classed('led', true)
+                .attr('width', (radius + margin) * 2)
+                .append('svg:g')
+                .attr('transform', 'translate(' + (radius + margin) + ',' + (radius + margin) + ')')
+                .call(tron.led);
+    ```
+    0. Leave a blank line after blocks and before the next statement.
+    ```javascript
+        // bad
+        if (foo) {
+            return bar;
+        }
+        return baz;
 
-          return qux;
-      }
-      ```
+        // good
+        if (foo) {
+            return bar;
+        }
 
-    - Single quotes must be used.
+        return baz;
 
-    - Object literals should look like this.
-      ```javascript
-      var objectLiteral;
+        // bad
+        var obj = {
+            foo() {
+            },
+            bar() {
+            },
+        };
+        return obj;
 
-      objectLiteral = {
-          foo: 'bar',
-          baz: 'qux'
-      };
-      ```
+        // good
+        var obj = {
+            foo() {
+               },
 
-    - Milliseconds should be assigned in multiples of 1000, and always use
+            bar() {
+            },
+        };
+
+        return obj;
+    ```
+- #### Declarations
+    0. Assign variables where you need them, but place them in a reasonable place.
+
+    *Why?* This will help others maintain context when reading long code blocks.
+
+    ```javascript
+        function doTwoThings() {
+            var thingone = 1;
+
+            thingone++;
+
+            var thingtwo = true;
+
+            if (thingtwo) {
+                thingone++;
+            }
+        }
+    ```
+    0. Use single quotes for strings!
+    ```javascript
+    var myNameIs = 'Slim Shady';
+    ```
+    0. Object literals should look like this:
+    ```javascript
+        var objectLiteral = {
+            foo: 'bar',
+            baz: 'qux'
+        };
+    ```
+    0. Milliseconds should be assigned in multiples of 1000, and always use
       explicit order of operations.
-      ```javascript
-      var
-          oneSecond = 1000 * 1,
-          oneMinute = 1000 * 60,
-          fiveMinutes = (1000 * 60) * 5;
-      ```
+    ```javascript
+        var oneSecond = 1000 * 1,
+            oneMinute = 1000 * 60,
+            fiveMinutes = (1000 * 60) * 5;
+    ```
+    0. Use a leading underscore _ when naming private properties.
+    ```javascript
+    // BAD! NO!
+    this._things_
+    this.things_
+    this.THINGS
 
+    // GOOD!
+    this._things = 'private';
+    ```
+
+
+- #### Naming
+    0. Use camel-case for variable and function names
+    ```javascript
+        var thisVariableIsCamelCase = true;
+
+        function doSomethingGreat(isGreat) {
+            if (isGreat) {
+                alert('Pretty good!');
+            }
+        }
+    ```
+    0. Be descriptive with your function and variable names!
+    ```javascript
+    // BAD! wtf man
+    var nstate = nStateOnLoad();
+
+    // GOOD!
+    var navigationState = getNavigationState();
+    ```
+    0. Prefix jQuery selection variables with '$'
+    ```javascript
+    // BAD!
+    var navigationLinks = $('nav a');
+
+    // GOOD!
+    var $navigationLinks = $('nav a');
+    ```
+
+- #### Comments
+    0. Use JSDoc-style comments to describe methods and functionality
+    ```javascript
+        /**
+         * make() returns a new element
+         * based on the passed in tag
+         *
+         * @param {String} tag
+         * @return {Element} element
+         */
+
+         function make(tag) {
+             // some code
+             return element;
+         }
+    ```
+    0. Please use single line comments to describe how your code works! Debugging issues can be very difficult if it's unclear how a block of code works or what certain conditionals are for. Be kind to future devs!
+    ```javascript
+        function make(template) {
+            var $element,
+                isFancy;
+
+            // first, create a jQuery instance of the tag passed in
+            $element = $(template);
+
+            if (isFancy) {
+                // if the element is supposed to be fancy, add a class
+                $element.addClass('fancy');
+            }
+
+            return element;
+        }
+    ```
 
 ## HTML
 0. Write clean semantic HTML5 markup.
@@ -143,6 +242,44 @@ We will be using:
 0. Do not try to put code blocks as secondary bullets in a list.  They will not
   render correctly on both GitHub and BitBucket. More details on this to come
   in the future.
+
+ ## Contributors
+ **YOU!** - please contribute to these code guidelines! If you have any
+ suggestions for improvement to these guidelines, *[create an issue][issue]* to
+ discuss it or *create a [pull request][pr]* with your changes and discussion
+ will occur on that PR.  Also review the [contributing guidelines](https://github.com/TurnerBroadcasting/mss-code-guidelines/blob/master/CONTRIBUTING.md).
+
+
+ ### Original Authors
+ - James Young [@jamsyoung](http://twitter.com/jamsyoung), [github](https://github.com/jamsyoung)
+ - Matt Crutchfield [@mtcrutch](https://twitter.com/mtcrutch), [github](https://github.com/mtcrutch)
+
+
+ ## Conflict Resolution
+ We have included [JSHint][jshint] and [JSCS][jscs] RC files in this repository
+ to validate javascript code against these guidelines.  When something is
+ questioned, these files will always win.  When in doubt, run JSHint and JSCS
+ with the `.jshintrc` and `.jscsrc` files in place and see if they find any
+ problems.  It is recommended that you find plugins for your editor of choice to
+ always validate your code against these files.
+
+ ### Regarding the multiple suffixed files
+ There are several `.jscs` and `.jshintrc` files with suffixes in this repo.  It
+ is up to you to choose the most appropriate one for your project.  Hopefully the
+ suffixes are clear, but just in case, here are some more details.
+
+ - **.jscs**: A JavaScript Code Style config file for ECMAScript 5 code.
+
+ - **.jscs-es6**: A JavaScript Code Style config file for ECMAScript 6 code.
+
+ - **.jshintrc-browser**: A JS Hint config file for browser based ECMAScript 5
+   code.
+
+ - **.jshintrc-node**: A JS Hint config file for NodeJS 0.10.x ECMAScript 5 code.
+
+ - **.jshintrc-node-es6**: A JS Hint config file for NodeJS 0.11.x+ and IO.js
+   ECMAScript 6 code.
+
 
 
 
