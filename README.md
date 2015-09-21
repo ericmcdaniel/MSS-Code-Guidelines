@@ -334,9 +334,10 @@ Here is a brief glossary of terms:
     - **Always** use semantic tags!
     - **Always** use doublequotes for attributes!
     - **Always** use proper indentation (keep your structure sane!)
+    - **Always** make your html human-readable
     - **Never** use an #id for styling hooks
     - **Never** use **&lt;table&gt;**s for layout
-    - **Always** make your html human-readable
+
     - Each new tag should exist on its own line!
     ```html
     <!-- BAD! NO! -->
@@ -358,7 +359,10 @@ Here is a brief glossary of terms:
     </div>
     ```
     - In a block of html, insert empty lines after tags within the same block. No new line
-    should exist after the parent opening tag, or the before the parent closing tag
+    should exist after the parent opening tag, or the before the parent closing tag.
+
+    **EXCEPTION:** For inline block styling, items may need to live on the same line. Acceptable
+    deviance is inserting html comments to eliminate the inline-block space.
 
     ```html
     <!-- TOO BUNCHED UP DUDE -->
@@ -388,19 +392,9 @@ Here is a brief glossary of terms:
         <p>Things</p>
     </div>
     ```
-
-
-
-- Write clean semantic HTML5 markup.
-0. Use double quotes for attributes.
-0. Use proper indention.
-0. Selector Attributes
-  Never use an ID as a styling hook.
-  Prefix any JavaScript class hooks with `js-`. Example: `class="js-foo foo"`
-0. Closing `<li>` elements.
-  `<li>` elements should not be closed. [Further reading on this inline-block
-  issue.][inline]
-
+    - Closing `<li>` elements.
+      `<li>` elements should not be closed. [Further reading on this inline-block
+      issue.][inline]
 
 ## CSS / Sass
 0. The CSS / Sass guidelines are based off of [csswizardry/CSS-Guidelines][css].
