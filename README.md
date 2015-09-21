@@ -194,7 +194,7 @@ We will be using:
         var $element,
             isFancy;
 
-        // first, create a jQuery instance of the tag passed in
+        // first, create a jQuery instance of the html template string passed in
         $element = $(template);
 
         if (isFancy) {
@@ -207,6 +207,97 @@ We will be using:
     ```
 
 ## HTML
+- Use semantic tags in the way they were intended! Here is a brief glossary of terms:
+
+    ```html
+    <section>
+
+    - A meaningful division of content - every major group of content in between a header and footer
+    ```
+
+    ```html
+    <header>
+
+    - The header for a section
+    ```
+
+    ```html
+    <footer>
+
+    - The footer for a section
+    ```
+
+    ```html
+    <article>
+
+    - A full article
+    ```
+
+    ```html
+    <nav>
+
+    - Navigation! Main site navigation, contextual navigation - used for accessing site contents
+    ```
+
+    ```html
+    <aside>
+
+    - Elements that exist outside of the normal page flow/reading flow. Sidebars, related content, etc.
+    ```
+
+    ```html
+    <cite>
+
+    - A citation- used for references or bylines
+    ```
+
+    ```html
+    <figure>
+
+    - An image, illustration, or graph that is used as a meaningful piece of content
+    ```
+
+    ```html
+    <figcaption>
+
+    - The contextual caption for a <figure>
+    ```
+
+- Example markup using semantic tags:
+
+    ```html
+    <!-- EXAMPLE MARKUP -->
+    <section class="recent-articles">
+        <header>Most Recent Article</header>
+
+        <nav>
+            <a href="#allthearticles">Load all articles</a>
+        </nav>
+
+        <article>
+            <h2>The Most Important Article</h2>
+            <figure>
+                <img src="/someimage.jpg" />
+                <figcaption>Fig. 1 - This image explains everything!</figcaption>
+            </figure>
+            <cite>By Antonio Banderas</cite>
+            <p>
+                This is the article copy. It's pretty short because this is an example, and not for
+                the internet at large. Remember, words are important!
+            </p>
+        </article>
+
+        <footer>
+            <a href="#signup">Sign up for our newsletter!</a>
+        </footer>
+    </section>
+    ```
+
+
+
+
+
+
 - Write clean semantic HTML5 markup.
 0. Use double quotes for attributes.
 0. Use proper indention.
