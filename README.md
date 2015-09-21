@@ -207,12 +207,15 @@ We will be using:
     ```
 
 ## HTML
-- Use semantic tags in the way they were intended! Here is a brief glossary of terms:
+- #### Semantic Tags:
+Use semantic tags in the way they were intended!  
+Here is a brief glossary of terms:
 
     ```html
     <section>
 
-    - A meaningful division of content - every major group of content in between a header and footer
+    - A meaningful division of content - every major group
+    of content in between a header and footer
     ```
 
     ```html
@@ -236,13 +239,15 @@ We will be using:
     ```html
     <nav>
 
-    - Navigation! Main site navigation, contextual navigation - used for accessing site contents
+    - Navigation! Main site navigation, contextual navigation -
+    used for accessing site contents
     ```
 
     ```html
     <aside>
 
-    - Elements that exist outside of the normal page flow/reading flow. Sidebars, related content, etc.
+    - Elements that exist outside of the normal page
+    flow/reading flow. Sidebars, related content, etc.
     ```
 
     ```html
@@ -254,7 +259,8 @@ We will be using:
     ```html
     <figure>
 
-    - An image, illustration, or graph that is used as a meaningful piece of content
+    - An image, illustration, or graph that is used as
+    a meaningful piece of content
     ```
 
     ```html
@@ -282,8 +288,9 @@ We will be using:
             </figure>
             <cite>By Antonio Banderas</cite>
             <p>
-                This is the article copy. It's pretty short because this is an example, and not for
-                the internet at large. Remember, words are important!
+                This is the article copy. It's pretty short because
+                this is an example, and not for the internet at large.
+                Remember, words are important!
             </p>
         </article>
 
@@ -293,8 +300,94 @@ We will be using:
     </section>
     ```
 
+- #### Structural elements
+    It is sometimes necessary to wrap HTML in tags that are structural, and have no direct impact on the content presented.
+    This is totally fine, but keep it clean!
 
+    In the example below, we have a UI that contains two buttons and a paragraph
+    of text that is output based on some kind of user interaction. On a small screen (or small space), the buttons and
+    the output text can stack vertically (think, display: block down the page).
 
+    On a larger screen, however, we may want these groups of elements to go 50/50 to better occupy screen real-estate.
+
+    In this type of case, we can semantically divide our html into two "ui-group"s, allowing us the flexibility required to make a nice app.
+
+    ````html
+    <section class="admin-tool">
+        <div class="ui-group">
+            <button>Button 1</button>
+            <button>Button 2</button>
+        </div>
+
+        <div class="ui-group">
+            <p>
+                This is a read-out of some kind of
+                admin tool. Clicking those buttons
+                affects the text!
+            </p>
+            <a href="#reload">Reload That Text!</a>
+        </div>
+    </section>
+    ```
+
+- #### Syntax
+    - **Always** use semantic tags!
+    - **Always** use doublequotes for attributes!
+    - **Always** use proper indentation (keep your structure sane!)
+    - **Never** use an #id for styling hooks
+    - **Never** use **&lt;table&gt;**s for layout
+    - **Always** make your html human-readable
+    - Each new tag should exist on its own line!
+    ```html
+    <!-- BAD! NO! -->
+    <div class="thing">
+        <section><h1>Title</h1>
+        <a href="thing">Things are happening <span>here</span></a></section>
+    </div>
+
+    <!-- Ah! Room to breathe, and now the structure is apparent. -->
+    <div class="thing">
+        <section>
+            <h1>Title</h1>
+
+            <a href="thing">
+                Things are happening
+                <span>here</span>
+            </a>
+        </section>
+    </div>
+    ```
+    - In a block of html, insert empty lines after tags within the same block. No new line
+    should exist after the parent opening tag, or the before the parent closing tag
+
+    ```html
+    <!-- TOO BUNCHED UP DUDE -->
+    <div class="thing">
+        <h1>Title</h1>
+        <h2>Title 2</h2>
+        <p>Things</p>
+    </div>
+
+    <!-- TOO SPACED OUT DUDE -->
+    <div class="thing">
+
+        <h1>Title</h1>
+
+        <h2>Title 2</h2>
+
+        <p>Things</p>
+
+    </div>
+
+    <!-- THIS LOOKS GREAT -->
+    <div class="thing">
+        <h1>Title</h1>
+
+        <h2>Title 2</h2>
+
+        <p>Things</p>
+    </div>
+    ```
 
 
 
