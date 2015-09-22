@@ -429,7 +429,7 @@ Here is a brief glossary of terms:
     ```
 
 - #### Data Attributes
-    - Data attributes should be used to provide information to JavaScript to initialize or operate on that portion of the DOM. For instance:
+    - Data attributes should be used to provide information to JavaScript to initialize or operate on that portion of the DOM. For instance, consider this fictional example that loads 20 comments from a particular service. At a high-level, all that is required to make the service calls are an **id** and a **count** for number of comments.
 
     ```html
     <div class="comments" data-comment-id="jks34" data-comment-count="20">
@@ -437,7 +437,6 @@ Here is a brief glossary of terms:
     </div>
     ```
 
-        - This fictional div is used to load 20 comments from a particular service. At a high-level, all that is required to make the service calls are an **id** and a **count** for number of comments.
     - In special cases, data attributes can be used for CSS display values. Consider this example:
     ```html
     <div class="city--label" data-city-name="Houston, TX"></div>
