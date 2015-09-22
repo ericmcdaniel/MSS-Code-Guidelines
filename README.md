@@ -410,7 +410,7 @@ Here is a brief glossary of terms:
 
     In this type of case, we can semantically divide our html into two "ui-group"s, allowing us the flexibility required to make a nice app.
 
-    ````html
+    ```html
     <section class="admin-tool">
         <div class="ui-group">
             <button>Button 1</button>
@@ -427,6 +427,29 @@ Here is a brief glossary of terms:
         </div>
     </section>
     ```
+
+- #### Data Attributes
+    - Data attributes should be used to provide information to JavaScript to initialize or operate on that portion of the DOM. For instance:
+
+    ```html
+    <div class="comments" data-comment-id="jks34" data-comment-count="20">
+        ...
+    </div>
+    ```
+
+        - This fictional div is used to load 20 comments from a particular service. At a high-level, all that is required to make the service calls are an **id** and a **count** for number of comments.
+    - In special cases, data attributes can be used for CSS display values. Consider this example:
+    ```html
+    <div class="city--label" data-city-name="Houston, TX"></div>
+
+    <style>
+        .city--label:before {
+            content: attr(data-city-name);
+        }
+    </style>
+    ```
+- #### ID's
+    - Use ID's sparingly! Make sure there is only one per document! And never style them ;)
 
 - #### Syntax
     - **Always** use semantic tags!
