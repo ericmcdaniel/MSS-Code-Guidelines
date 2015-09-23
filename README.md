@@ -562,8 +562,8 @@ Here is a brief glossary of terms:
    heading at the top of the document.  This is optinal for other headings.
 0. Should have 4 blank lines to separate the link reference at the bottom of
    the document.
-0. Should use `0.` for ordered lists
-0. Should use `-` for unordered lists
+0. Should use `0.` for ordered lists.
+0. Should use `-` for unordered lists.
 0. Secondary bullets must be indented four spaces to render correctly on
   Bitbucket.
 0. Do not try to put code blocks as secondary bullets in a list.  They will not
