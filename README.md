@@ -454,8 +454,8 @@ Here is a brief glossary of terms:
     - **Always** use semantic tags!
     - **Always** use doublequotes for attributes!
     - **Always** use proper indentation (keep your structure sane!)
-    - **Always** make your html human-readable
-    - **Never** use an #id for styling hooks
+    - **Always** make your HTML human-readable
+    - **Never** use an #ID for styling hooks
     - **Never** use **tables** for layout
     - Closing `<li>` elements.
       `<li>` elements should not be closed. [Further reading on this inline-block
@@ -530,13 +530,30 @@ Here is a brief glossary of terms:
 
 ## CSS / Sass
 0. The CSS / Sass guidelines are based off of [csswizardry/CSS-Guidelines][css].
-0. We use [nomalize.css][normalize] as our style reset.
+0. We use [normalize.css][normalize] as our style reset.
+0. We favor BEM (Block Element Modifier) syntax where possible, and the wonderfully flat selector structure this gives us.
+    - Blocks
+    ```css
+    .article {
+        font-size: 1em;
+    }
 
+    .article--video {
+        /* some video article styles */
+    }
+    ```
+    - Elements
+    ```css
+    .article__title {
+        font-size: 3em;
+    }
 
-#### Our CSS / Sass overrides
-0. Declarations.
-  Declarations should be in aplhabetical order (**NOT** by relevance).
-
+    .article__byline {
+        font-size: .8em;
+        font-weight: bold;
+        color: #c00;
+    }
+    ```
 
 ## Markdown
 0. All lines that are not code blocks should wrap at or under 80 columns.

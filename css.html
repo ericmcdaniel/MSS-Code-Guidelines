@@ -1,0 +1,62 @@
+// HIGH LEVEL CSS REQUIREMENTS
+
+1. Highly readable in both stylesheets and HTML
+2. Separation of concerns: Layout/Box Model, Visual/Typography, Stateful Modifiers, Visual Theming
+3. Keep specificity flat and intentional!
+4. Universally consistent naming scheme and inheritance model (intentional mix of paradigms vs ".zn div.cn.grid .cd--headline__title--modified > h3");
+
+
+<div class="candidate-avatar">
+    <img class="candidate-avatar__img" src="http://placehold.it/40x40" />
+    <h4 class="candidate-avatar__name">William Traversley III</h4>
+</div>
+
+<style>
+    .candidate-avatar {
+        display: block;
+    }
+
+    .candidate-avatar__img {
+        width: 40px;
+        height: 40px;
+        overflow: hidden;
+        border-radius: 20px;
+    }
+</style>
+
+<div class="layout-list">
+    <div class="layout-row">
+        <div class="candidate-avatar width-half">
+            <img class="candidate-avatar__img" src="http://placehold.it/40x40" />
+            <h4 class="candidate-avatar__name">William Traversley III</h4>
+        </div>
+        <div class="otherthing width-half">
+            <img src="" />
+        </div>
+    </div>
+</div>
+
+<style>
+    .layout-list {
+        display: block;
+        width: 100%;
+    }
+
+    .layout-row {
+        display: block;
+        width: 100%;
+    }
+
+    .width {
+        display: inline-block;
+        vertical-align: middle;
+
+        &-half {
+            width: 50%;
+        }
+
+        &-third {
+            width: 33.33%;
+        }
+    }
+</style>
