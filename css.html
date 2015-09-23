@@ -5,58 +5,49 @@
 3. Keep specificity flat and intentional!
 4. Universally consistent naming scheme and inheritance model (intentional mix of paradigms vs ".zn div.cn.grid .cd--headline__title--modified > h3");
 
+// SEPARATION OF CONCERNS
 
-<div class="candidate-avatar">
-    <img class="candidate-avatar__img" src="http://placehold.it/40x40" />
-    <h4 class="candidate-avatar__name">William Traversley III</h4>
-</div>
-
+1. Structure and Layout
+    - Grids
+        • Import external or write your own, keep it separate!
+    - Breakpoints
+        • Page-level reflows and breakpoints
+    - Padding / Margins ?
+2. Base/Global Style Treatments
+    - Normalize.css
+    - Typography
+    - Colors
+    - UI overrides for basic HTML elements
+3. Components
+    - Shared structure + styles for small UI pieces (lego blocks)
+    - Displayed in visual style guide
+    - Use BEM syntax
+4. Modules
+    - Composed mostly of components
+    - Special visual treatments/structural treatments that will not be reused.
+        • If you find yourself doing the same thing twice, you should make a component and document it.
+5. Themes
+    - Colors, backgrounds, borders as applied to an element
 <style>
-    .candidate-avatar {
-        display: block;
-    }
+    .theme--democrat {
+        .theme__color {
+            color: $blue;
+        }
 
-    .candidate-avatar__img {
-        width: 40px;
-        height: 40px;
-        overflow: hidden;
-        border-radius: 20px;
+        .theme__background {
+            background: $blue;
+        }
+
+        .theme__border {
+            border: 1px solid $blue
+        }
     }
 </style>
 
-<div class="layout-list">
-    <div class="layout-row">
-        <div class="candidate-avatar width-half">
-            <img class="candidate-avatar__img" src="http://placehold.it/40x40" />
-            <h4 class="candidate-avatar__name">William Traversley III</h4>
-        </div>
-        <div class="otherthing width-half">
+    <div class="candidate theme--democrat">
+        <h2 class="candidate__name theme__color">Thing</h2>
+        <div class="candidate__otherthing [ theme__border theme__color ]">
             <img src="" />
         </div>
+        <div class="candidate__winner theme__background"></div>
     </div>
-</div>
-
-<style>
-    .layout-list {
-        display: block;
-        width: 100%;
-    }
-
-    .layout-row {
-        display: block;
-        width: 100%;
-    }
-
-    .width {
-        display: inline-block;
-        vertical-align: middle;
-
-        &-half {
-            width: 50%;
-        }
-
-        &-third {
-            width: 33.33%;
-        }
-    }
-</style>
