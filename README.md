@@ -555,6 +555,109 @@ Here is a brief glossary of terms:
     }
     ```
 
+### Guidelines
+Default styling must be mobile first.
+```css
+/* Poor */
+.class {
+    border: 1px solid #888;
+    color: #ccc;
+
+    @media (max-width: 359px) {
+        border: none;
+    }
+}
+
+/* Good */
+.class {
+    color: #ccc;
+
+    @media (min-width: 360px) {
+        border: 1px solid #888;
+    }
+}
+```
+
+Wherever possible, separate structural properties from visual properties. This
+will allow us to easily swap visual skinning of elements without needing to
+override css definitions.
+
+```html
+<style>
+    .element {
+        margin: 0 auto;
+        width: 50%;
+    }
+
+    .element--light {
+        background-color: #ddd;
+    }
+
+    .element--dark {
+        background-color: #333;
+        color: #fff;
+    }
+
+    .element--hidden {
+        display: none;
+    }
+</style>
+
+<div class="element element--light">
+    Light background.
+</div>
+
+<div class="element element--dark">
+    Dark background
+</div>
+
+<div class="element element--dark element--hidden">
+    Hiding in the dark
+</div>
+```
+
+Here's a list of structural properties vs visual properties:
+
+| Structural   | Visual                 |
+| ------------ | ---------------------- |
+| border-width | background             |
+| height       | border-color           |
+| margin       | display                |
+| padding      | transform / transition |
+| position     | opacity                |
+| width        |                        |
+
+Sometimes, however, an element will need some sort of default styling. When
+creating the default state, think of which one can be achieved using the least
+amount of selectors. In the example above, `element--light` requires one less
+definition, and would be a candidate for default styling.
+
+Let's use sass to keep our code clean!
+
+```sass
+.element {
+    @extend .element--light;
+
+    margin: 0 auto;
+    width: 50%;
+}
+
+.element--light {
+    background-color: #ddd;
+}
+
+// Outputs:
+//
+// .element {
+//     margin: 0 auto;
+//     width: 50%;
+// }
+//
+// .element--light, .element {
+//     background-color: #ddd;
+// }
+```
+
 ## Markdown
 0. All lines that are not code blocks should wrap at or under 80 columns.
 0. Should allow trailing whitespace, since that is a valid Markdown syntax.
@@ -565,47 +668,47 @@ Here is a brief glossary of terms:
 0. Should use `0.` for ordered lists.
 0. Should use `-` for unordered lists.
 0. Secondary bullets must be indented four spaces to render correctly on
-  Bitbucket.
+   Bitbucket.
 0. Do not try to put code blocks as secondary bullets in a list.  They will not
-  render correctly on both GitHub and BitBucket. More details on this to come
-  in the future.
+   render correctly on both GitHub and BitBucket. More details on this to come
+   in the future.
 
- ## Contributors
- **YOU!** - please contribute to these code guidelines! If you have any
- suggestions for improvement to these guidelines, *[create an issue][issue]* to
- discuss it or *create a [pull request][pr]* with your changes and discussion
- will occur on that PR.  Also review the [contributing guidelines](https://github.com/TurnerBroadcasting/mss-code-guidelines/blob/master/CONTRIBUTING.md).
-
-
- ### Original Authors
- - James Young [@jamsyoung](http://twitter.com/jamsyoung), [github](https://github.com/jamsyoung)
- - Matt Crutchfield [@mtcrutch](https://twitter.com/mtcrutch), [github](https://github.com/mtcrutch)
+## Contributors
+**YOU!** - please contribute to these code guidelines! If you have any
+suggestions for improvement to these guidelines, *[create an issue][issue]* to
+discuss it or *create a [pull request][pr]* with your changes and discussion
+will occur on that PR.  Also review the [contributing guidelines](https://github.com/TurnerBroadcasting/mss-code-guidelines/blob/master/CONTRIBUTING.md).
 
 
- ## Conflict Resolution
- We have included [JSHint][jshint] and [JSCS][jscs] RC files in this repository
- to validate javascript code against these guidelines.  When something is
- questioned, these files will always win.  When in doubt, run JSHint and JSCS
- with the `.jshintrc` and `.jscsrc` files in place and see if they find any
- problems.  It is recommended that you find plugins for your editor of choice to
- always validate your code against these files.
+### Original Authors
+- James Young [@jamsyoung](http://twitter.com/jamsyoung), [github](https://github.com/jamsyoung)
+- Matt Crutchfield [@mtcrutch](https://twitter.com/mtcrutch), [github](https://github.com/mtcrutch)
 
- ### Regarding the multiple suffixed files
- There are several `.jscs` and `.jshintrc` files with suffixes in this repo.  It
- is up to you to choose the most appropriate one for your project.  Hopefully the
- suffixes are clear, but just in case, here are some more details.
 
- - **.jscs**: A JavaScript Code Style config file for ECMAScript 5 code.
+## Conflict Resolution
+We have included [JSHint][jshint] and [JSCS][jscs] RC files in this repository
+to validate javascript code against these guidelines.  When something is
+questioned, these files will always win.  When in doubt, run JSHint and JSCS
+with the `.jshintrc` and `.jscsrc` files in place and see if they find any
+problems.  It is recommended that you find plugins for your editor of choice to
+always validate your code against these files.
 
- - **.jscs-es6**: A JavaScript Code Style config file for ECMAScript 6 code.
+### Regarding the multiple suffixed files
+There are several `.jscs` and `.jshintrc` files with suffixes in this repo.  It
+is up to you to choose the most appropriate one for your project.  Hopefully the
+suffixes are clear, but just in case, here are some more details.
 
- - **.jshintrc-browser**: A JS Hint config file for browser based ECMAScript 5
-   code.
+- **.jscs**: A JavaScript Code Style config file for ECMAScript 5 code.
 
- - **.jshintrc-node**: A JS Hint config file for NodeJS 0.10.x ECMAScript 5 code.
+- **.jscs-es6**: A JavaScript Code Style config file for ECMAScript 6 code.
 
- - **.jshintrc-node-es6**: A JS Hint config file for NodeJS 0.11.x+ and IO.js
-   ECMAScript 6 code.
+- **.jshintrc-browser**: A JS Hint config file for browser based ECMAScript 5
+code.
+
+- **.jshintrc-node**: A JS Hint config file for NodeJS 0.10.x ECMAScript 5 code.
+
+- **.jshintrc-node-es6**: A JS Hint config file for NodeJS 0.11.x+ and IO.js
+ECMAScript 6 code.
 
 
 
