@@ -624,7 +624,7 @@ Here's a list of structural properties vs visual properties:
 | margin       | display                |
 | padding      | transform / transition |
 | position     | opacity                |
-| width        |                        |
+| width        | color                  |
 
 Sometimes, however, an element will need some sort of default styling. When
 creating the default state, think of which one can be achieved using the least
@@ -635,6 +635,7 @@ Let's use sass to keep our code clean!
 
 ```sass
 .element {
+    // include element--light as the default theming
     @extend .element--light;
 
     margin: 0 auto;
