@@ -43,7 +43,7 @@ We will be using:
     var thirteen = (39 * 2) / 6;
 
     ```
-    - User indendation when making long method chains (a la underscore/lodash, d3.js, etc.). Use a leading dot, which emphasizes that the line is a method call, not a new statement.
+    - User indendtation when making long method chains (a la underscore/lodash, d3.js, etc.). Use a leading dot, which emphasizes that the line is a method call, not a new statement.
     ```javascript
     // bad
     var leds = stage.selectAll('.led').data(data).enter().append('svg:svg').class('led', true)
@@ -98,20 +98,19 @@ We will be using:
     return obj;
     ```
 - #### Declarations
-    - Assign variables where you need them, but place them in a reasonable place.
+    - Use only one variable declaration, at the top of your function. Chain together with commas
 
-    *Why?* This will help others maintain context when reading long code blocks.
+    *Why?* Your functions should be short, and keeping the vars in one place is a good way to keep inventory as you read the function.
 
     ```javascript
     function doTwoThings() {
-        var thingone = 1;
+        var thingOne = 1,
+            thingTwo = true;
 
-        thingone++;
+        thingOne++;
 
-        var thingtwo = true;
-
-        if (thingtwo) {
-            thingone++;
+        if (thingTwo) {
+            thingOne++;
         }
     }
     ```
@@ -144,7 +143,6 @@ We will be using:
     this._things = 'private';
     ```
 
-
 - #### Naming
     - Use camel-case for variable and function names
     ```javascript
@@ -158,7 +156,7 @@ We will be using:
     ```
     - Be descriptive with your function and variable names!
     ```javascript
-    // BAD! wtf man
+    // BAD! WHYYYY!!!
     var nState = nStateOnLoad();
 
     // GOOD!
@@ -189,7 +187,7 @@ We will be using:
         return element;
     }
     ```
-    - Please use single line comments to describe how your code works! Debugging issues can be very difficult if it's unclear how a block of code works or what certain conditionals are for. Be kind to future devs!
+    - Please use single line comments to describe how your code works! Debugging issues can be very difficult if it's unclear how a block of code works or what certain conditionals are for. Be kind to future developers!
     ```javascript
     function make(template) {
         var $element,
@@ -207,7 +205,7 @@ We will be using:
     }
     ```
 - #### Functions
-    - The general approach when writing a function is that any future developer (including yourself in six months) can read it like a human and know what is up. Comments should not be your crutch for sense-making- a combination of clear naming conventions, conditionals that read like sentences, and simple explanations in comments where needed will help keep code clear and maintainable. Example:
+    - The general approach when writing a function is that any future developer (including yourself in six months) can read it like a human and know what is happening. Comments should not be your crutch for sense-making- a combination of clear naming conventions, conditionals that read like sentences, and simple explanations in comments where needed will help keep code clear and maintainable. Example:
 
     ```javascript
     function makeSandwich(bread, meat, veggies) {
@@ -290,14 +288,14 @@ We will be using:
     ```
 
     - Some notes on this thing:
-        - First, sorry.
+        - First, sorry!
         - The function name and arguments are not very descriptive. Is sandwich even a verb??? WTF is ingredient2???
-        - All of the conditionals you see were 'conditional' on our understanding of the parameters needed for the function to succeed. tldr; we started with one, and quickly ballooned into the tangled web of logic.
-        - While this function returns a slew of "useful" error messages, the basics of "can i make a sandwich" do not require such verbose treatment. tldr; KEEP IT SIMPLE
+        - All of the conditionals you see were 'conditional' on our understanding of the parameters needed for the function to succeed. **tldr; We started with one, and quickly ballooned into this tangled web of logic.**
+        - While this function returns a slew of "useful" error messages, the basic question of "can i make a sandwich" does not require such verbose treatment. **tldr; KEEP IT SIMPLE**
         - The first fifteen some odd lines of conditionals in this function were accomplished in FOUR in the first function. This was done by creating readable, boolean variables to keep track of the essential information needed to run the function.
-        - Using poorly named variables, and doing explicit checks in a sequence of if/else statments, it is very easy to lost context for wtf is happening.
-        - Assembling the message over many lines means that any future updates to the output of this function will most likely break the meaning.
-        - Many return statements makes it difficult to tell when/if the function will stop executing.
+        - By using poorly named variables and doing explicit checks in a sequence of if/else conditionals, it is very easy to lost context for what is happening.
+        - Assembling the message over multiple lines means that any future updates to the output of this function will most likely break the meaning.
+        - Many return statements makes it difficult to tell when/if the function will stop executing and what will happen when it does.
         - Comments! The comments in this function do not add any value, mostly describing the exact code that follows. Sometimes not even that :)
 
 ## HTML
@@ -549,14 +547,14 @@ Here is a brief glossary of terms:
     }
 
     .article__byline {
+        color: #c00;
         font-size: .8em;
         font-weight: bold;
-        color: #c00;
     }
     ```
 
 ### Guidelines
-Default styling must be mobile first.
+Default styling must be mobile/small-sized first.
 ```css
 /* Poor */
 .class {
@@ -585,6 +583,7 @@ override css definitions.
 ```html
 <style>
     .element {
+        height: 200px;
         margin: 0 auto;
         width: 50%;
     }
