@@ -795,12 +795,12 @@ ECMAScript 6 code.
 
 ### <a name="HelpfulLinks"></a> Helpful Links
 
-[airbnb](https://github.com/airbnb/javascript)
-[css](https://github.com/csswizardry/CSS-Guidelines)
-[idiomatic](https://github.com/airbnb/javascript)
-[inline](http://css-tricks.com/fighting-the-space-between-inline-block-elements/)
-[issue](https://github.com/TurnerBroadcasting/MTS-Code-Guidelines/issues/new)
-[jscs](https://github.com/mdevils/node-jscs)
-[jshint](https://github.com/jshint/jshint/)
-[normalize](http://necolas.github.io/normalize.css/)
-[pr](https://github.com/TurnerBroadcasting/MTS-Code-Guidelines/compare/)
+[AirBnB Style Guide](https://github.com/airbnb/javascript)  
+[CSS Guidelines](https://github.com/csswizardry/CSS-Guidelines)  
+[Idiomatic Javascript](https://github.com/airbnb/javascript)  
+[Inline Block Problems!](http://css-tricks.com/fighting-the-space-between-inline-block-elements/)  
+[GitHub Issues](https://github.com/TurnerBroadcasting/MTS-Code-Guidelines/issues/new)  
+[JSCS](https://github.com/mdevils/node-jscs)  
+[JSHint](https://github.com/jshint/jshint/)  
+[Normalize CSS](http://necolas.github.io/normalize.css/)  
+[Pull Requests](https://github.com/TurnerBroadcasting/MTS-Code-Guidelines/compare/)
