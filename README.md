@@ -25,7 +25,7 @@ but also a tool for learning for all future developers!
     - [Syntax](#Syntax)
 - [CSS / SASS](#CSS)
     - [BEM](#BEM)
-    - [Mobile First!](#MobileFirst!)
+    - [Mobile First!](#MobileFirst)
     - [Separate structure, visual styles, and theming](#SeparateStructure)
     - [Default visual/theme styles](#DefaultStyles)
 - [Markdown](#Markdown)
@@ -795,12 +795,12 @@ ECMAScript 6 code.
 
 ### <a name="HelpfulLinks"></a> Helpful Links
 
-[airbnb]: https://github.com/airbnb/javascript
-[css]: https://github.com/csswizardry/CSS-Guidelines
-[idiomatic]: https://github.com/airbnb/javascript
-[inline]: http://css-tricks.com/fighting-the-space-between-inline-block-elements/
-[issue]: https://github.com/TurnerBroadcasting/MTS-Code-Guidelines/issues/new
-[jscs]: https://github.com/mdevils/node-jscs
-[jshint]: https://github.com/jshint/jshint/
-[normalize]: http://necolas.github.io/normalize.css/
-[pr]: https://github.com/TurnerBroadcasting/MTS-Code-Guidelines/compare/
+[airbnb](https://github.com/airbnb/javascript)
+[css](https://github.com/csswizardry/CSS-Guidelines)
+[idiomatic](https://github.com/airbnb/javascript)
+[inline](http://css-tricks.com/fighting-the-space-between-inline-block-elements/)
+[issue](https://github.com/TurnerBroadcasting/MTS-Code-Guidelines/issues/new)
+[jscs](https://github.com/mdevils/node-jscs)
+[jshint](https://github.com/jshint/jshint/)
+[normalize](http://necolas.github.io/normalize.css/)
+[pr](https://github.com/TurnerBroadcasting/MTS-Code-Guidelines/compare/)
