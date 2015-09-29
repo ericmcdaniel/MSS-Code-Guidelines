@@ -39,10 +39,10 @@ but also a tool for learning for all future developers!
 - [Helpful Links](#HelpfulLinks)
 
 ## <a name="js"></a> JavaScript
-The JavaScript guidelines are based off of [idiomatic.js][Idiomatic Javascript].
+The JavaScript guidelines are based off of [idiomatic.js](https://github.com/airbnb/javascript).
 
 For lots of code examples that show the style we want, see the
-[airbnb guide][AirBnB Style Guide].
+[airbnb guide](https://github.com/airbnb/javascript).
 
 The MSS Guidelines will be the same with the following additional rules applied.
 
@@ -543,8 +543,8 @@ Use ID's sparingly! Make sure there is only one per document! And never style th
   ```
 
 ## <a name="css"></a> CSS/SASS
-0. The CSS/Sass guidelines are based off of [csswizardry/CSS-Guidelines][css].
-0. We use [normalize.css][normalize] as our style reset.
+0. The CSS/Sass guidelines are based off of [csswizardry/CSS-Guidelines](https://github.com/csswizardry/CSS-Guidelines).
+0. We use [normalize.css](http://necolas.github.io/normalize.css/) as our style reset.
 0. <a name="BEM"></a> We favor BEM (Block Element Modifier) syntax where possible, and the wonderfully flat selector structure this gives us.
 
 ### <a name="css-bem"> BEM
