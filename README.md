@@ -618,9 +618,10 @@ Here is a brief glossary of terms:
     //
     // COLOR VARS
     //
-    $robot-titanium: #ddd;
-    $robot-gold: gold;
+
     $robot-black: #121212;
+    $robot-gold: gold;
+    $robot-titanium: #ddd;
 
     //
     // Robot Component
@@ -721,8 +722,8 @@ could be used to define a theme:
 Let's use sass to keep our code clean!
 
 ```sass
-$robot-titanium: #ddd;
 $robot-spaceblack: #121212;
+$robot-titanium: #ddd;
 
 .robot {
     // include element--light as the default theming
