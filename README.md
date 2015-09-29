@@ -39,7 +39,7 @@ but also a tool for learning for all future developers!
 - [Authors](#Authors)
 - [Helpful Links](#HelpfulLinks)
 
-## JavaScript <a name="js"></a>
+## <a name="js"></a> JavaScript
 The JavaScript guidelines are based off of [idiomatic.js][idiomatic].
 
 For lots of code examples that show the style we want, see the
@@ -47,7 +47,7 @@ For lots of code examples that show the style we want, see the
 
 The MSS Guidelines will be the same with the following additional rules applied.
 
-### Test Facility <a name="js-test">
+### <a name="js-test"> Test Facility
 We will be using:
 
 - Mocha / Chai for unit tests
@@ -56,7 +56,7 @@ We will be using:
 
 
 ### Idiomatic Style Manifesto
-#### Whitespace <a name="js-whitespace"></a>
+#### <a name="js-whitespace"></a> Whitespace
 
 4-space soft indents are required. This means four spaces or four spaces representing a tab.
 
@@ -137,7 +137,7 @@ var obj = {
 return obj;
 ```
 
-#### Declarations <a name="js-declarations"></a>
+#### <a name="js-declarations"></a> Declarations
 
 Use only one variable declaration, at the top of your function. Chain together with commas
 
@@ -188,7 +188,7 @@ this._things = 'private';
 ```
 
 
-#### Naming <a name="js-naming"></a>
+#### <a name="js-naming"></a> Naming
 Use camel-case for variable and function names
 ```javascript
 var thisVariableIsCamelCase = true;
@@ -218,7 +218,7 @@ var navigationLinks = $('nav a');
 var $navigationLinks = $('nav a');
 ```
 
-#### Comments <a name="js-comments"></a>
+#### <a name="js-comments"></a> Comments
 Use JSDoc-style comments to describe methods and functionality
 ```javascript
 /**
@@ -253,7 +253,7 @@ function make(template) {
 }
 ```
 
-#### Functions <a name="js-functions"></a>
+#### <a name="js-functions"></a> Functions
 The general approach when writing a function is that any future developer (including yourself in six months) can read it like a human and know what is happening. Comments should not be your crutch for sense-making- a combination of clear naming conventions, conditionals that read like sentences, and simple explanations in comments where needed will help keep code clear and maintainable. Example:
 
 ```javascript
@@ -348,11 +348,11 @@ function makeSandwich(bread, meat, veggies) {
 - Comments! The comments in this function do not add any value, mostly describing the exact code that follows. Sometimes not even that :)
 
 
-## HTML <a name="html"></a>
-### Semantic Tags <a name="html-semantic"></a>
+## <a name="html"></a> HTML
+### <a name="html-semantic"></a> Semantic Tags
 Use semantic tags in the way they were intended!  
 
-#### HTML Tag Glossary <a name="html-glossary"></a>
+#### <a name="html-glossary"></a> HTML Tag Glossary
 <dl>
     <dt>&lt;section&gt;</dt>
         <dd> A meaningful division of content - every major group of content in between a header and footer</dd>
@@ -411,7 +411,7 @@ Markup using semantic tags:
 </section>
 ```
 
-### Structural Elements <a name="html-structure"></a>
+### <a name="html-structure"></a> Structural Elements
 It is sometimes necessary to wrap HTML in tags that are structural, and have no direct impact on the content presented.
 
 This is totally fine, but keep it clean!
@@ -440,7 +440,7 @@ In this type of case, we can semantically divide our html into two "ui-group"s, 
 </section>
 ```
 
-### Data Attributes <a name="html-data-attributes"></a>
+### <a name="html-data-attributes"></a> Data Attributes
 Data attributes should be used to provide information to JavaScript to initialize or operate on that portion of the DOM. For instance, consider this fictional example that loads 20 comments from a particular service. At a high-level, all that is required to make the service calls are an **id** and a **count** for number of comments.
 
 ```html
@@ -460,7 +460,7 @@ In special cases, data attributes can be used for CSS display values. Consider t
 </style>
 ```
 
-### ID's <a name="html-ids"></a>
+### <a name="html-ids"></a> ID's
 Use ID's sparingly! Make sure there is only one per document! And never style them ;)
 
 
@@ -543,7 +543,7 @@ Use ID's sparingly! Make sure there is only one per document! And never style th
   </div>
   ```
 
-## CSS/SASS <a name="css"></a>
+## <a name="css"></a> CSS/SASS
 0. The CSS/Sass guidelines are based off of [csswizardry/CSS-Guidelines][css].
 0. We use [normalize.css][normalize] as our style reset.
 0. <a name="BEM"></a> We favor BEM (Block Element Modifier) syntax where possible, and the wonderfully flat selector structure this gives us.
@@ -571,8 +571,8 @@ Use ID's sparingly! Make sure there is only one per document! And never style th
     }
     ```
 
-### CSS Guidelines <a name="css-guidelines"></a>
-#### Mobile First <a name="css-mobile-first"></a>
+### <a name="css-guidelines"></a> CSS Guidelines
+#### <a name="css-mobile-first"></a> Mobile First
 Default styling must be mobile/small-sized first.
 ```css
 /* Poor */
@@ -595,7 +595,7 @@ Default styling must be mobile/small-sized first.
 }
 ```
 
-#### Structure <a name="css-structure"></a>
+#### <a name="css-structure"></a> Structure
 Separate structural properties from visual properties using scoped mixins. This will allow us to easily swap visual appearance of elements without needing to override css definitions, and helps us think about skinning properties vs layout properties. This format also serves as a self-documenting table of contents.
 
 For this to work, define a mixin within a class definition. Immediately after, include the mixin.
@@ -672,7 +672,7 @@ $robot-titanium: #ddd;
 ```
 
 
-#### CSS Properties List <a name="css-properties-list"></a>
+#### <a name="css-properties-list"></a> CSS Properties List
 Here's a list of structural properties vs visual properties:
 
 | Structural | Visual     |
