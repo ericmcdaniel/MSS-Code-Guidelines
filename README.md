@@ -472,7 +472,7 @@ Use ID's sparingly! Make sure there is only one per document! And never style th
 - **Never** use **tables** for layout
 - Closing `<li>` elements.
   `<li>` elements should not be closed. [Further reading on this inline-block
-  issue.][inline]
+  issue.](http://css-tricks.com/fighting-the-space-between-inline-block-elements/)
 - Each new tag should exist on its own line!
 
   ```html
@@ -718,12 +718,12 @@ could be used to define a theme:
 
 ## <a name="Contributors"></a> Contributors
 **YOU!** - please contribute to these code guidelines! If you have any
-suggestions for improvement to these guidelines, *[create an issue][issue]* to
-discuss it or *create a [pull request][pr]* with your changes and discussion
+suggestions for improvement to these guidelines, *[create an issue](https://github.com/TurnerBroadcasting/MTS-Code-Guidelines/issues/new)* to
+discuss it or *create a [pull request](https://github.com/TurnerBroadcasting/MTS-Code-Guidelines/compare/)* with your changes and discussion
 will occur on that PR.  Also review the [contributing guidelines](https://github.com/TurnerBroadcasting/mss-code-guidelines/blob/master/CONTRIBUTING.md).
 
 ## <a name="ConflictResolution"></a> Conflict Resolution
-We have included [JSHint][jshint] and [JSCS][jscs] RC files in this repository
+We have included [JSHint](https://github.com/jshint/jshint/) and [JSCS](https://github.com/mdevils/node-jscs) RC files in this repository
 to validate javascript code against these guidelines.  When something is
 questioned, these files will always win.  When in doubt, run JSHint and JSCS
 with the `.jshintrc` and `.jscsrc` files in place and see if they find any
@@ -756,12 +756,12 @@ ECMAScript 6 code.
 
 ### <a name="HelpfulLinks"></a> Helpful Links
 
-[AirBnB Style Guide](https://github.com/airbnb/javascript)  
-[CSS Guidelines](https://github.com/csswizardry/CSS-Guidelines)  
-[Idiomatic Javascript](https://github.com/airbnb/javascript)  
-[Inline Block Problems!](http://css-tricks.com/fighting-the-space-between-inline-block-elements/)  
-[GitHub Issues](https://github.com/TurnerBroadcasting/MTS-Code-Guidelines/issues/new)  
-[JSCS](https://github.com/mdevils/node-jscs)  
-[JSHint](https://github.com/jshint/jshint/)  
-[Normalize CSS](http://necolas.github.io/normalize.css/)  
+[AirBnB Style Guide](https://github.com/airbnb/javascript)
+[CSS Guidelines](https://github.com/csswizardry/CSS-Guidelines)
+[Idiomatic Javascript](https://github.com/airbnb/javascript)
+[Inline Block Problems!](http://css-tricks.com/fighting-the-space-between-inline-block-elements/)
+[GitHub Issues](https://github.com/TurnerBroadcasting/MTS-Code-Guidelines/issues/new)
+[JSCS](https://github.com/mdevils/node-jscs)
+[JSHint](https://github.com/jshint/jshint/)
+[Normalize CSS](http://necolas.github.io/normalize.css/)
 [Pull Requests](https://github.com/TurnerBroadcasting/MTS-Code-Guidelines/compare/)
