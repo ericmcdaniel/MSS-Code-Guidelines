@@ -14,7 +14,6 @@ but also a tool for learning for all future developers!
 - [Javascript](#js)
     - [Test Facility](#js-test)
     - [Whitespace](#js-whitespace)
-    - [Whitespace](#js-whitespace)
     - [Declarations](#js-declarations)
     - [Naming](#js-naming)
     - [Comments](#js-comments)
@@ -40,10 +39,10 @@ but also a tool for learning for all future developers!
 - [Helpful Links](#HelpfulLinks)
 
 ## <a name="js"></a> JavaScript
-The JavaScript guidelines are based off of [idiomatic.js][idiomatic].
+The JavaScript guidelines are based off of [idiomatic.js][Idiomatic Javascript].
 
 For lots of code examples that show the style we want, see the
-[airbnb guide][airbnb].
+[airbnb guide][AirBnB Style Guide].
 
 The MSS Guidelines will be the same with the following additional rules applied.
 
@@ -464,7 +463,7 @@ In special cases, data attributes can be used for CSS display values. Consider t
 Use ID's sparingly! Make sure there is only one per document! And never style them ;)
 
 
-### Syntax <a name="html-syntax"></a>
+### <a name="html-syntax"></a> Syntax
 - **Always** use semantic tags!
 - **Always** use doublequotes for attributes!
 - **Always** use proper indentation (keep your structure sane!)
@@ -547,6 +546,8 @@ Use ID's sparingly! Make sure there is only one per document! And never style th
 0. The CSS/Sass guidelines are based off of [csswizardry/CSS-Guidelines][css].
 0. We use [normalize.css][normalize] as our style reset.
 0. <a name="BEM"></a> We favor BEM (Block Element Modifier) syntax where possible, and the wonderfully flat selector structure this gives us.
+
+### <a name="css-bem"> BEM
     ```css
     /* Block */
     .article {
