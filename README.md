@@ -697,12 +697,12 @@ Let's use sass to keep our code clean!
 
 // Outputs:
 //
-// .element {
+// .robot {
 //     margin: 0 auto;
 //     width: 50%;
 // }
 //
-// .element--light, .element {
+// .robot--model5000, .robot {
 //     background-color: #ddd;
 //     border: 1px solid #121212;
 // }
