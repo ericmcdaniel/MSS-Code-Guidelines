@@ -27,7 +27,6 @@ but also a tool for learning for all future developers!
     - [BEM](#BEM)
     - [Mobile First!](#MobileFirst)
     - [Separate structure, visual styles, and theming](#SeparateStructure)
-    - [Default visual/theme styles](#DefaultStyles)
 - [Markdown](#Markdown)
 - [Contributing!](#Contributors)
 - [Conflict Resolution](#ConflictResolution)
@@ -608,98 +607,89 @@ Here is a brief glossary of terms:
 }
 ```
 
-- <a name="SeparateStructure"></a> Separate structural properties from visual properties using extends. This
-    will allow us to easily swap visual skinning of elements without needing to
-    override css definitions. This format also serves as a self-documenting table
-    of contents.
+- <a name="SeparateStructure"></a> Separate structural properties from visual properties using scoped mixins. This will allow us to easily swap visual appearance of elements without needing to override css definitions, and helps us think about skinning properties vs layout properties. This format also serves as a self-documenting table of contents.
 
 ```sass
+// Color Vars
+$robot-black: #121212;
+$robot-gold: gold;
+$robot-titanium: #ddd;
 
-    //
-    // COLOR VARS
-    //
-
-    $robot-black: #121212;
-    $robot-gold: gold;
-    $robot-titanium: #ddd;
-
-    //
-    // Robot Component
-    //
-
-    .robot {
-        @extend %robot-structure;
-        @extend %robot-visual;
-        @extend %robot-theme;
-    }
-
-    .robot__head {
-        @extend %robot__head-structure;
-        @extend %robot__head-visual;
-        @extend %robot__head-theme;
-    }
-
-    .robot--spacerobot {
-        @extend %robot--spacerobot-theme;
-    }
-
-    //
-    // Robot Block Styles
-    //
-
-    %robot-structure {
+// Blocks
+.robot {
+    @mixin structure {
         display: block;
         height: 60px;
         width: 100px;
     }
 
-    %robot-visual {
+    @mixin visual {
+        background-color: $robot-titanium;
+        border: 1px solid $robot-gold;
         box-shadow: 2px 2px 2px rgba(255,0,0,.6);
         transform: translateZ(1000px);
     }
 
-    %robot-theme {
-        background-color: $robot-titanium;
-        border: 1px solid $robot-gold;
-    }
+    @include structure;
+    @include visual;
+}
 
-    //
-    // Robot Element Styles
-    //
-
-    %robot__head-structure {
+// Elements
+.robot__head {
+    @mixin structure {
         display: block;
     }
 
-    %robot__head-visual {
+    @mixin visual {
+        background-color: $robot-black;
         border-radius: 1000px;
     }
 
-    %robot__head-theme {
-        background-color: $robot-black;
+    @include structure;
+    @include visual;
+}
+
+.robot__claw {
+    @mixin structure {
+        display: block;
+
+        &:before {
+            content: 'CLAW TIME';
+        }
     }
 
-    //
-    // Robot Modifier Styles
-    //
+    @mixin visual {
+        background-color: $robot-black;
+        border-radius: 1000px;
+        box-shadow: 10px 10px 10px gold;
+    }
 
-    %robot--spacerobot-theme {
+    @include structure;
+    @include visual;
+}
+
+// Modifiers
+.robot--space-robot {
+    @mixin visual {
         background: url(/images/spacegraphic.png) repeat top left;
     }
+
+    @include visual;
+}
 ```
 
 Here's a list of structural properties vs visual properties:
 
-| Structural    | Visual       |
-| ------------- | ------------ |
-| display       | background   |
-| height        | border       |
-| margin        | color        |
-| padding       | transform    |
-| position      | transition   |
-| width         | opacity      |
-| z-index       | visibility   |
-|               | box-shadow   |
+| Structural | Visual     |
+| ---------- | ---------- |
+| display    | background |
+| height     | box-shadow |
+| margin     | border     |
+| padding    | color      |
+| position   | transform  |
+| width      | transition |
+| z-index    | opacity    |
+|            | visibility |
 
 Depending on the application, here is a list of properties that
 could be used to define a theme:
@@ -714,42 +704,6 @@ could be used to define a theme:
 | text-transform                    |
 | and more! (but nothing structural)|
 
-- <a name="DefaultStyles"></a> Sometimes, however, an element will need some sort of default styling. When
-    creating the default state, think of which one can be achieved using the least
-    amount of selectors. In the example above, `element--light` requires one less
-    definition, and would be a candidate for default styling.
-
-Let's use sass to keep our code clean!
-
-```sass
-$robot-spaceblack: #121212;
-$robot-titanium: #ddd;
-
-.robot {
-    // include element--light as the default theming
-    @extend .robot--model5000;
-
-    margin: 0 auto;
-    width: 50%;
-}
-
-.robot--model5000 {
-    background-color: $robot-chrome;
-    border: 1px solid $robot-spaceblack;
-}
-
-// Outputs:
-//
-// .robot {
-//     margin: 0 auto;
-//     width: 50%;
-// }
-//
-// .robot--model5000, .robot {
-//     background-color: #ddd;
-//     border: 1px solid #121212;
-// }
-```
 
 ## <a name="Markdown"></a> Markdown
 0. All lines that are not code blocks should wrap at or under 80 columns.
