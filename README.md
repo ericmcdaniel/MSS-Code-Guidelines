@@ -3,7 +3,39 @@ Version 1.3.0
 
 ![I honestly didn't think you could even USE emoji in variable names. Or that there were so many different crying ones.](http://imgs.xkcd.com/comics/code_quality.png)
 
-## JavaScript
+## About these guidelines
+
+The central goal of this document is to create readable, consistent code across
+web applications in MSS. While each application has its own constraints and needs,
+it is helpful to think of your application as not only a business-critical application,
+but also a tool for learning for all future developers!
+
+### Table of contents
+- [Javascript](#Javascript)
+    - [Whitespace](#Whitespace)
+    - [Declarations](#Declarations)
+    - [Naming](#Naming)
+    - [Comments](#Comments)
+    - [Functions](#Functions)
+- [HTML](#HTML)
+    - [Semantic Tags](#SemanticTags)
+    - [Structural Elements](#StructuralElements)
+    - [Data Attributes](#DataAttributes)
+    - [ID's](#IDs)
+    - [Syntax](#Syntax)
+- [CSS / SASS](#CSS)
+    - [BEM](#BEM)
+    - [Mobile First!](#MobileFirst!)
+    - [Separate structure, visual styles, and theming](#SeparateStructure)
+    - [Default visual/theme styles](#DefaultStyles)
+- [Markdown](#Markdown)
+- [Contributing!](#Contributors)
+- [Conflict Resolution](#ConflictResolution)
+- [Included Files](#IncludedFiles)
+- [Authors](#Authors)
+- [Helpful Links](#HelpfulLinks)
+
+## <a name="Javascript"></a>JavaScript
 The JavaScript guidelines are based off of [idiomatic.js][idiomatic].
 
 For lots of code examples that show the style we want, see the
@@ -21,7 +53,7 @@ We will be using:
 
 
 ### Idiomatic Style Manifesto
-- #### Whitespace
+- #### <a name="Whitespace"></a> Whitespace
     - 4-space soft indents are required.  This means four spaces or four spaces
       representing a tab.
     - Place 1 space before the leading brace and 1 space before the parentheses in control statements (if, else, while, for)
@@ -97,7 +129,7 @@ We will be using:
 
     return obj;
     ```
-- #### Declarations
+- #### <a name="Declarations"></a> Declarations
     - Use only one variable declaration, at the top of your function. Chain together with commas
 
     *Why?* Your functions should be short, and keeping the vars in one place is a good way to keep inventory as you read the function.
@@ -143,7 +175,7 @@ We will be using:
     this._things = 'private';
     ```
 
-- #### Naming
+- #### <a name="Naming"></a> Naming
     - Use camel-case for variable and function names
     ```javascript
     var thisVariableIsCamelCase = true;
@@ -171,7 +203,7 @@ We will be using:
     var $navigationLinks = $('nav a');
     ```
 
-- #### Comments
+- #### <a name="Comments"></a> Comments
     - Use JSDoc-style comments to describe methods and functionality
     ```javascript
     /**
@@ -204,7 +236,7 @@ We will be using:
         return element;
     }
     ```
-- #### Functions
+- #### <a name="Functions"></a> Functions
     - The general approach when writing a function is that any future developer (including yourself in six months) can read it like a human and know what is happening. Comments should not be your crutch for sense-making- a combination of clear naming conventions, conditionals that read like sentences, and simple explanations in comments where needed will help keep code clear and maintainable. Example:
 
     ```javascript
@@ -298,8 +330,8 @@ We will be using:
         - Many return statements makes it difficult to tell when/if the function will stop executing and what will happen when it does.
         - Comments! The comments in this function do not add any value, mostly describing the exact code that follows. Sometimes not even that :)
 
-## HTML
-- #### Semantic Tags:
+## <a name="HTML"></a> HTML
+- #### <a name="SemanticTags"></a> Semantic Tags:
 Use semantic tags in the way they were intended!  
 Here is a brief glossary of terms:
 
@@ -396,7 +428,7 @@ Here is a brief glossary of terms:
     </section>
     ```
 
-- #### Structural elements
+- #### <a name="StructuralElements"></a> Structural Elements
     It is sometimes necessary to wrap HTML in tags that are structural, and have no direct impact on the content presented.
     This is totally fine, but keep it clean!
 
@@ -426,7 +458,7 @@ Here is a brief glossary of terms:
     </section>
     ```
 
-- #### Data Attributes
+- #### <a name="DataAttributes"></a> Data Attributes
     - Data attributes should be used to provide information to JavaScript to initialize or operate on that portion of the DOM. For instance, consider this fictional example that loads 20 comments from a particular service. At a high-level, all that is required to make the service calls are an **id** and a **count** for number of comments.
 
     ```html
@@ -445,10 +477,10 @@ Here is a brief glossary of terms:
         }
     </style>
     ```
-- #### ID's
+- #### <a name="IDs"></a> ID's
     - Use ID's sparingly! Make sure there is only one per document! And never style them ;)
 
-- #### Syntax
+- #### <a name="Syntax"></a> Syntax
     - **Always** use semantic tags!
     - **Always** use doublequotes for attributes!
     - **Always** use proper indentation (keep your structure sane!)
@@ -526,10 +558,10 @@ Here is a brief glossary of terms:
     </div>
     ```
 
-## CSS / Sass
+## <a name="CSS"></a> CSS / SASS
 0. The CSS / Sass guidelines are based off of [csswizardry/CSS-Guidelines][css].
 0. We use [normalize.css][normalize] as our style reset.
-0. We favor BEM (Block Element Modifier) syntax where possible, and the wonderfully flat selector structure this gives us.
+0. <a name="BEM"></a> We favor BEM (Block Element Modifier) syntax where possible, and the wonderfully flat selector structure this gives us.
     - Blocks
     ```css
     .article {
@@ -554,7 +586,7 @@ Here is a brief glossary of terms:
     ```
 
 ### Guidelines
-Default styling must be mobile/small-sized first.
+- <a name="MobileFirst"></a> Default styling must be mobile/small-sized first.
 ```css
 /* Poor */
 .class {
@@ -576,10 +608,10 @@ Default styling must be mobile/small-sized first.
 }
 ```
 
-Separate structural properties from visual properties using extends. This
-will allow us to easily swap visual skinning of elements without needing to
-override css definitions. This format also serves as a self-documenting table
-of contents.
+- <a name="SeparateStructure"></a> Separate structural properties from visual properties using extends. This
+    will allow us to easily swap visual skinning of elements without needing to
+    override css definitions. This format also serves as a self-documenting table
+    of contents.
 
 ```sass
 
@@ -674,10 +706,10 @@ could be used to define a theme:
 | text-transform                    |
 | and more! (but nothing structural)|
 
-Sometimes, however, an element will need some sort of default styling. When
-creating the default state, think of which one can be achieved using the least
-amount of selectors. In the example above, `element--light` requires one less
-definition, and would be a candidate for default styling.
+- <a name="DefaultStyles"></a> Sometimes, however, an element will need some sort of default styling. When
+    creating the default state, think of which one can be achieved using the least
+    amount of selectors. In the example above, `element--light` requires one less
+    definition, and would be a candidate for default styling.
 
 Let's use sass to keep our code clean!
 
@@ -708,7 +740,7 @@ Let's use sass to keep our code clean!
 // }
 ```
 
-## Markdown
+## <a name="Markdown"></a> Markdown
 0. All lines that are not code blocks should wrap at or under 80 columns.
 0. Should allow trailing whitespace, since that is a valid Markdown syntax.
 0. Should have 2 blank lines above each H1 and H2 heading except for the
@@ -723,19 +755,13 @@ Let's use sass to keep our code clean!
    render correctly on both GitHub and BitBucket. More details on this to come
    in the future.
 
-## Contributors
+## <a name="Contributors"></a> Contributors
 **YOU!** - please contribute to these code guidelines! If you have any
 suggestions for improvement to these guidelines, *[create an issue][issue]* to
 discuss it or *create a [pull request][pr]* with your changes and discussion
 will occur on that PR.  Also review the [contributing guidelines](https://github.com/TurnerBroadcasting/mss-code-guidelines/blob/master/CONTRIBUTING.md).
 
-
-### Original Authors
-- James Young [@jamsyoung](http://twitter.com/jamsyoung), [github](https://github.com/jamsyoung)
-- Matt Crutchfield [@mtcrutch](https://twitter.com/mtcrutch), [github](https://github.com/mtcrutch)
-
-
-## Conflict Resolution
+## <a name="ConflictResolution"></a> Conflict Resolution
 We have included [JSHint][jshint] and [JSCS][jscs] RC files in this repository
 to validate javascript code against these guidelines.  When something is
 questioned, these files will always win.  When in doubt, run JSHint and JSCS
@@ -743,7 +769,7 @@ with the `.jshintrc` and `.jscsrc` files in place and see if they find any
 problems.  It is recommended that you find plugins for your editor of choice to
 always validate your code against these files.
 
-### Regarding the multiple suffixed files
+### <a name="IncludedFiles"></a> Regarding the multiple suffixed files
 There are several `.jscs` and `.jshintrc` files with suffixes in this repo.  It
 is up to you to choose the most appropriate one for your project.  Hopefully the
 suffixes are clear, but just in case, here are some more details.
@@ -760,9 +786,14 @@ code.
 - **.jshintrc-node-es6**: A JS Hint config file for NodeJS 0.11.x+ and IO.js
 ECMAScript 6 code.
 
+### <a name="Authors"></a> Authors
+- James Young [@jamsyoung](http://twitter.com/jamsyoung), [github](https://github.com/jamsyoung)
+- Matt Crutchfield [@mtcrutch](https://twitter.com/mtcrutch), [github](https://github.com/mtcrutch)
+- Christian Hain [github](https://github.com/mtcrutch)
+- Paul Borrego [github](https://github.com/mtcrutch)
+- Chris Gonzalez [github](https://github.com/chrisgonzalez)
 
-
-
+### <a name="HelpfulLinks"></a> Helpful Links
 
 [airbnb]: https://github.com/airbnb/javascript
 [css]: https://github.com/csswizardry/CSS-Guidelines
