@@ -576,55 +576,103 @@ Default styling must be mobile/small-sized first.
 }
 ```
 
-Wherever possible, separate structural properties from visual properties. This
+Separate structural properties from visual properties using extends. This
 will allow us to easily swap visual skinning of elements without needing to
-override css definitions.
+override css definitions. This format also serves as a self-documenting table
+of contents.
 
-```html
-<style>
-    .element {
-        height: 200px;
-        margin: 0 auto;
-        width: 50%;
+```sass
+
+    //
+    // Robot Component
+    //
+
+    .robot {
+        @extend %robot-structure;
+        @extend %robot-visual;
+        @extend %robot-theme;
     }
 
-    .element--light {
-        background-color: #ddd;
+    .robot__head {
+        @extend %robot__head-structure;
+        @extend %robot__head-visual;
+        @extend %robot__head-theme;
     }
 
-    .element--dark {
-        background-color: #333;
-        color: #fff;
+    .robot--spacerobot {
+        @extend %robot--spacerobot-theme;
     }
 
-    .element--hidden {
-        display: none;
+    //
+    // Robot Block Styles
+    //
+
+    %robot-structure {
+        display: block;
+        height: 60px;
+        width: 100px;
     }
-</style>
 
-<div class="element element--light">
-    Light background.
-</div>
+    %robot-visual {
+        box-shadow: 2px 2px 2px rgba(255,0,0,.6);
+        transform: translateZ(1000px);
+    }
 
-<div class="element element--dark">
-    Dark background
-</div>
+    %robot-theme {
+        background-color: $robot-titanium;
+        border: 1px solid $robot-gold;
+    }
 
-<div class="element element--dark element--hidden">
-    Hiding in the dark
-</div>
+    //
+    // Robot Element Styles
+    //
+
+    %robot__head-structure {
+        display: block;
+    }
+
+    %robot__head-visual {
+        border-radius: 1000px;
+    }
+
+    %robot__head-theme {
+        background-color: $robot-black;
+    }
+
+    //
+    // Robot Modifier Styles
+    //
+
+    %robot--spacerobot-theme {
+        background: url(/images/spacegraphic.png) repeat top left;
+    }
 ```
 
 Here's a list of structural properties vs visual properties:
 
-| Structural   | Visual                 |
-| ------------ | ---------------------- |
-| border-width | background             |
-| height       | border-color           |
-| margin       | display                |
-| padding      | transform / transition |
-| position     | opacity                |
-| width        | color                  |
+| Structural    | Visual       |
+| ------------- | ------------ |
+| display       | background   |
+| height        | border       |
+| margin        | color        |
+| padding       | transform    |
+| position      | transition   |
+| width         | opacity      |
+| z-index       | visibility   |
+|               | box-shadow   |
+
+Depending on the application, here is a list of properties that
+could be used to define a theme:
+
+| Theme                             |
+| --------------------------------- |
+| background                        |
+| border                            |
+| box-shadow                        |
+| color                             |
+| font-family                       |
+| text-transform                    |
+| and more! (but nothing structural)|
 
 Sometimes, however, an element will need some sort of default styling. When
 creating the default state, think of which one can be achieved using the least
@@ -634,16 +682,17 @@ definition, and would be a candidate for default styling.
 Let's use sass to keep our code clean!
 
 ```sass
-.element {
+.robot {
     // include element--light as the default theming
-    @extend .element--light;
+    @extend .robot--model5000;
 
     margin: 0 auto;
     width: 50%;
 }
 
-.element--light {
-    background-color: #ddd;
+.robot--model5000 {
+    background-color: $robot-chrome;
+    border: 1px solid $robot-spaceblack;
 }
 
 // Outputs:
@@ -655,6 +704,7 @@ Let's use sass to keep our code clean!
 //
 // .element--light, .element {
 //     background-color: #ddd;
+//     border: 1px solid #121212;
 // }
 ```
 
