@@ -11,22 +11,27 @@ it is helpful to think of your application as not only a business-critical appli
 but also a tool for learning for all future developers!
 
 ### Table of contents
-- [Javascript](#Javascript)
-    - [Whitespace](#Whitespace)
-    - [Declarations](#Declarations)
-    - [Naming](#Naming)
-    - [Comments](#Comments)
-    - [Functions](#Functions)
+- [Javascript](#js)
+    - [Test Facility](#js-test)
+    - [Whitespace](#js-whitespace)
+    - [Whitespace](#js-whitespace)
+    - [Declarations](#js-declarations)
+    - [Naming](#js-naming)
+    - [Comments](#js-comments)
+    - [Functions](#js-functions)
 - [HTML](#HTML)
-    - [Semantic Tags](#SemanticTags)
-    - [Structural Elements](#StructuralElements)
-    - [Data Attributes](#DataAttributes)
-    - [ID's](#IDs)
-    - [Syntax](#Syntax)
-- [CSS / SASS](#CSS)
-    - [BEM](#BEM)
-    - [Mobile First!](#MobileFirst)
-    - [Separate structure, visual styles, and theming](#SeparateStructure)
+    - [Semantic Tags](#html-semantic)
+    - [HTML Tag Glossary](#html-glossary)
+    - [Structural Elements](#html-structure)
+    - [Data Attributes](#html-data-attributes)
+    - [ID's](#html-ids)
+    - [Syntax](#html-syntax)
+- [CSS / SASS](#css)
+    - [BEM](#css-bem)
+    - [CSS Guidelines](#css-guidelines)
+        - [Mobile First!](#css-mobile-first)
+        - [Structure](#css-structure)
+        - [CSS Properties List](#css-properties-list)
 - [Markdown](#Markdown)
 - [Contributing!](#Contributors)
 - [Conflict Resolution](#ConflictResolution)
@@ -34,7 +39,7 @@ but also a tool for learning for all future developers!
 - [Authors](#Authors)
 - [Helpful Links](#HelpfulLinks)
 
-## <a name="Javascript"></a>JavaScript
+## JavaScript <a name="js"></a>
 The JavaScript guidelines are based off of [idiomatic.js][idiomatic].
 
 For lots of code examples that show the style we want, see the
@@ -42,8 +47,7 @@ For lots of code examples that show the style we want, see the
 
 The MSS Guidelines will be the same with the following additional rules applied.
 
-
-### Test Facility
+### Test Facility <a name="js-test">
 We will be using:
 
 - Mocha / Chai for unit tests
@@ -52,531 +56,514 @@ We will be using:
 
 
 ### Idiomatic Style Manifesto
-- #### <a name="Whitespace"></a> Whitespace
-    - 4-space soft indents are required.  This means four spaces or four spaces
-      representing a tab.
-    - Place 1 space before the leading brace and 1 space before the parentheses in control statements (if, else, while, for)
-    ```javascript
-    if (things) {
-        alert('Look how nice that space is!');
-    }
-    ```
-    - Place no spaces before the arguments list in a function declaration.
-    ```javascript
-    function makeSandwich(ham, cheese, egg) {
-        return ham + cheese + egg;
-    }
-    ```
-    - Set off operators with spaces
-    ```javascript
-    var value = a + b + c;
+#### Whitespace <a name="js-whitespace"></a>
 
-    var thirteen = (39 * 2) / 6;
+4-space soft indents are required. This means four spaces or four spaces representing a tab.
 
-    ```
-    - User indendtation when making long method chains (a la underscore/lodash, d3.js, etc.). Use a leading dot, which emphasizes that the line is a method call, not a new statement.
-    ```javascript
-    // bad
-    var leds = stage.selectAll('.led').data(data).enter().append('svg:svg').class('led', true)
-            .attr('width', (radius + margin) * 2).append('svg:g')
-            .attr('transform', 'translate(' + (radius + margin) + ',' + (radius + margin) + ')')
-            .call(tron.led);
+Place 1 space before the leading brace and 1 space before the parentheses in control statements (if, else, while, for)
+```javascript
+if (things) {
+    alert('Look how nice that space is!');
+}
+```
 
-    // good
-    var leds = stage.selectAll('.led')
-                    .data(data)
-                    .enter()
-                    .append('svg:svg')
-                    .classed('led', true)
-                    .attr('width', (radius + margin) * 2)
-                    .append('svg:g')
-                    .attr('transform', 'translate(' + (radius + margin) + ',' + (radius + margin) + ')')
-                    .call(tron.led);
-    ```
-    - Leave a blank line after blocks and before the next statement.
-    ```javascript
-    // bad
-    if (foo) {
-        return bar;
-    }
-    return baz;
+Place no spaces before the arguments list in a function declaration.
+```javascript
+function makeSandwich(ham, cheese, egg) {
+    return ham + cheese + egg;
+}
+```
 
-    // good
-    if (foo) {
-        return bar;
-    }
+Set off operators with spaces
+```javascript
+var value = a + b + c;
 
-    return baz;
+var thirteen = (39 * 2) / 6;
+```
 
-    // bad
-    var obj = {
-        foo() {
-        },
-        bar() {
-        },
-    };
-    return obj;
+User indentation when making long method chains (a la underscore/lodash, d3.js, etc.). Use a leading dot, which emphasizes that the line is a method call, not a new statement.
+```javascript
+// bad
+var leds = stage.selectAll('.led').data(data).enter().append('svg:svg').class('led', true)
+        .attr('width', (radius + margin) * 2).append('svg:g')
+        .attr('transform', 'translate(' + (radius + margin) + ',' + (radius + margin) + ')')
+        .call(tron.led);
 
-    // good
-    var obj = {
-        foo() {
-           },
+// good
+var leds = stage.selectAll('.led')
+                .data(data)
+                .enter()
+                .append('svg:svg')
+                .classed('led', true)
+                .attr('width', (radius + margin) * 2)
+                .append('svg:g')
+                .attr('transform', 'translate(' + (radius + margin) + ',' + (radius + margin) + ')')
+                .call(tron.led);
+```
 
-        bar() {
-        },
-    };
+Leave a blank line after blocks and before the next statement.
+```javascript
+// bad
+if (foo) {
+    return bar;
+}
+return baz;
 
-    return obj;
-    ```
-- #### <a name="Declarations"></a> Declarations
-    - Use only one variable declaration, at the top of your function. Chain together with commas
+// good
+if (foo) {
+    return bar;
+}
 
-    *Why?* Your functions should be short, and keeping the vars in one place is a good way to keep inventory as you read the function.
+return baz;
 
-    ```javascript
-    function doTwoThings() {
-        var thingOne = 1,
-            thingTwo = true;
+// bad
+var obj = {
+    foo() {
+    },
+    bar() {
+    },
+};
+return obj;
 
+// good
+var obj = {
+    foo() {
+       },
+
+    bar() {
+    },
+};
+
+return obj;
+```
+
+#### Declarations <a name="js-declarations"></a>
+
+Use only one variable declaration, at the top of your function. Chain together with commas
+
+*Why?* Your functions should be short, and keeping the vars in one place is a good way to keep inventory as you read the function.
+
+```javascript
+function doTwoThings() {
+    var thingOne = 1,
+        thingTwo = true;
+
+    thingOne++;
+
+    if (thingTwo) {
         thingOne++;
-
-        if (thingTwo) {
-            thingOne++;
-        }
     }
-    ```
-    - Use single quotes for strings!
-    ```javascript
-    var myNameIs = 'Slim Shady';
-    ```
-    - Object literals should look like this:
-    ```javascript
-    var objectLiteral = {
-        foo: 'bar',
-        baz: 'qux'
-    };
-    ```
-    - Milliseconds should be assigned in multiples of 1000, and always use
-      explicit order of operations.
-    ```javascript
-    var oneSecond = 1000 * 1,
-        oneMinute = 1000 * 60,
-        fiveMinutes = (1000 * 60) * 5;
-    ```
-    - Use a leading underscore _ when naming private properties.
-    ```javascript
-    // BAD! NO!
-    this._things_
-    this.things_
-    this.THINGS
+}
+```
 
-    // GOOD!
-    this._things = 'private';
-    ```
+Use single quotes for strings!
+```javascript
+var myNameIs = 'Slim Shady';
+```
 
-- #### <a name="Naming"></a> Naming
-    - Use camel-case for variable and function names
-    ```javascript
-    var thisVariableIsCamelCase = true;
+Object literals should look like this:
+```javascript
+var objectLiteral = {
+    foo: 'bar',
+    baz: 'qux'
+};
+```
 
-    function doSomethingGreat(isGreat) {
-        if (isGreat) {
-            alert('Pretty good!');
-        }
+Milliseconds should be assigned in multiples of 1000, and always use explicit order of operations.
+```javascript
+var oneSecond = 1000 * 1,
+    oneMinute = 1000 * 60,
+    fiveMinutes = (1000 * 60) * 5;
+```
+
+Use a leading underscore _ when naming private properties.
+```javascript
+// BAD! NO!
+this._things_
+this.things_
+this.THINGS
+
+// GOOD!
+this._things = 'private';
+```
+
+
+#### Naming <a name="js-naming"></a>
+Use camel-case for variable and function names
+```javascript
+var thisVariableIsCamelCase = true;
+
+function doSomethingGreat(isGreat) {
+    if (isGreat) {
+        alert('Pretty good!');
     }
-    ```
-    - Be descriptive with your function and variable names!
-    ```javascript
-    // BAD! WHYYYY!!!
-    var nState = nStateOnLoad();
+}
+```
 
-    // GOOD!
-    var navigationState = getNavigationState();
-    ```
-    - Prefix jQuery selection variables with '$'
-    ```javascript
-    // BAD!
-    var navigationLinks = $('nav a');
+Be descriptive with your function and variable names!
+```javascript
+// BAD! WHYYYY!!!
+var nState = nStateOnLoad();
 
-    // GOOD!
-    var $navigationLinks = $('nav a');
-    ```
+// GOOD!
+var navigationState = getNavigationState();
+```
 
-- #### <a name="Comments"></a> Comments
-    - Use JSDoc-style comments to describe methods and functionality
-    ```javascript
-    /**
-     * make() returns a new element
-     * based on the passed in tag
-     *
-     * @param {String} tag
-     * @return {Element} element
-     */
+Prefix jQuery selection variables with '$'
+```javascript
+// BAD!
+var navigationLinks = $('nav a');
 
-    function make(tag) {
-        // some code
-        return element;
+// GOOD!
+var $navigationLinks = $('nav a');
+```
+
+#### Comments <a name="js-comments"></a>
+Use JSDoc-style comments to describe methods and functionality
+```javascript
+/**
+ * make() returns a new element
+ * based on the passed in tag
+ *
+ * @param {String} tag
+ * @return {Element} element
+ */
+
+function make(tag) {
+    // some code
+    return element;
+}
+```
+
+Please use single line comments to describe how your code works! Debugging issues can be very difficult if it's unclear how a block of code works or what certain conditionals are for. Be kind to future developers!
+```javascript
+function make(template) {
+    var $element,
+        isFancy;
+
+    // first, create a jQuery instance of the html template string passed in
+    $element = $(template);
+
+    if (isFancy) {
+        // if the element is supposed to be fancy, add a class
+        $element.addClass('fancy');
     }
-    ```
-    - Please use single line comments to describe how your code works! Debugging issues can be very difficult if it's unclear how a block of code works or what certain conditionals are for. Be kind to future developers!
-    ```javascript
-    function make(template) {
-        var $element,
-            isFancy;
 
-        // first, create a jQuery instance of the html template string passed in
-        $element = $(template);
+    return element;
+}
+```
 
-        if (isFancy) {
-            // if the element is supposed to be fancy, add a class
-            $element.addClass('fancy');
-        }
+#### Functions <a name="js-functions"></a>
+The general approach when writing a function is that any future developer (including yourself in six months) can read it like a human and know what is happening. Comments should not be your crutch for sense-making- a combination of clear naming conventions, conditionals that read like sentences, and simple explanations in comments where needed will help keep code clear and maintainable. Example:
 
-        return element;
+```javascript
+function makeSandwich(bread, meat, veggies) {
+    // check if the sandwich has veggies, has meat, and determines sandwich potential
+    var hasVeggies = Array.isArray(veggies) && veggies.length > 0,
+        hasMeat = Array.isArray(meat) && meat.length > 0,
+        weCanMakeASandwich = (bread && (hasVeggies || hasMeat)) ? true : false,
+        message = 'No dude you can\'t make a sandwich';
+
+    // sets defaults for meat and veggies
+    meat = hasMeat ? meat : [];
+    veggies = hasVeggies ? veggies : [];
+
+    // if we can make a sandwich, tell us what it is all about
+    if (weCanMakeASandwich) {
+        message = 'Mmmm about to eat a ' + bread + ', ' + meat.join(', ') + veggies.join(', ') + ' sandwich';
     }
-    ```
-- #### <a name="Functions"></a> Functions
-    - The general approach when writing a function is that any future developer (including yourself in six months) can read it like a human and know what is happening. Comments should not be your crutch for sense-making- a combination of clear naming conventions, conditionals that read like sentences, and simple explanations in comments where needed will help keep code clear and maintainable. Example:
 
-    ```javascript
-    function makeSandwich(bread, meat, veggies) {
-        // check if the sandwich has veggies, has meat, and determines sandwich potential
-        var hasVeggies = Array.isArray(veggies) && veggies.length > 0,
-            hasMeat = Array.isArray(meat) && meat.length > 0,
-            weCanMakeASandwich = (bread && (hasVeggies || hasMeat)) ? true : false,
-            message = 'No dude you can\'t make a sandwich';
+    return message;    
+}
+```
 
-        // sets defaults for meat and veggies
-        meat = hasMeat ? meat : [];
-        veggies = hasVeggies ? veggies : [];
+##### We like this function for several reasons:
+- The variable declarations contain all of the conditions we need to guarantee success.
+- All conditionals are consolidated, in an intentional order.
+- By using Booleans as our primary success criteria, we can write very readable execution code later on.
+- Tweaking the names of the variables lets us have human-readable conditionals ("if we can make a sandwich").
+    - Originally, we had named this variable "canWeMakeASandwich", which, while readable, created an awkward sentence out loud.
+- A single return statement helps us reason about what this function outputs and when.
+- Always think about what you return- in a lot of cases, we can use this for chaining purposes.
 
-        // if we can make a sandwich, tell us what it is all about
-        if (weCanMakeASandwich) {
-            message = 'Mmmm about to eat a ' + bread + ', ' + meat.join(', ') + veggies.join(', ') + ' sandwich';
-        }
+- And now, a very very bad example:
+  ```javascript
+  function sandwich(ingredient1, ingredient2, veggies) {
+      var message = '';
 
-        return message;    
-    }
-    ```
+      // check if there is bread, or if there is only bread
+      if (typeof ingredient1 === 'undefined') {
+          message = "You can't make a sandwich without bread!";
+          return message;
+      } else if (typeof ingredient2 === 'undefined' && typeof veggies === 'undefined') {
+          message = "You can't make a sandwich with only bread!";
+          return message;
+      }
 
-    - We like this function for several reasons:
-        - The variable declarations contain all of the conditions we need to guarantee success.
-        - All conditionals are consolidated, in an intentional order.
-        - By using Booleans as our primary success criteria, we can write very readable execution code later on.
-        - Tweaking the names of the variables lets us have human-readable conditionals ("if we can make a sandwich").
-            - Originally, we had named this variable "canWeMakeASandwich", which, while readable, created an awkward sentence out loud.
-        - A single return statement helps us reason about what this function outputs and when.
-        - Always think about what you return- in a lot of cases, we can use this for chaining purposes.
+      // if ingredient 2 exists but isn't an array, set it to empty
+      if (typeof ingredient2 === 'undefined' || !Array.isArray(ingredient2)) {
+          ingredient2 = [];
+      }
 
-    - And now, a very very bad example:
-    ```javascript
-    function sandwich(ingredient1, ingredient2, veggies) {
-        var message = '';
+      // if veggies exists but isn't an array, set it to empty
+      if (typeof veggies === 'undefined' || !Array.isArray(veggies)) {
+          veggies = [];
+      }
 
-        // check if there is bread, or if there is only bread
-        if (typeof ingredient1 === 'undefined') {
-            message = "You can't make a sandwich without bread!";
-            return message;
-        } else if (typeof ingredient2 === 'undefined' && typeof veggies === 'undefined') {
-            message = "You can't make a sandwich with only bread!";
-            return message;
-        }
+      // if either ingredient 2 or veggies is an empty array
+      if (ingredient2.length === 0 && veggies.length === 0) {
+          message = "You don't have enough ingredients to make a sandwich, sir."
+          return message;
+      }
 
-        // if ingredient 2 exists but isn't an array, set it to empty
-        if (typeof ingredient2 === 'undefined' || !Array.isArray(ingredient2)) {
-            ingredient2 = [];
-        }
+      // tell user what sandwich is being made
+      message = 'Mmmm about to eat a ' + ingredient1;
 
-        // if veggies exists but isn't an array, set it to empty
-        if (typeof veggies === 'undefined' || !Array.isArray(veggies)) {
-            veggies = [];
-        }
+      // if ingredient 2 exists, add to sandwich
+      if (ingredient2.length > 0) {
+          message = message + ' ' + ingredient2.join(', ');
+      }
 
-        // if either ingredient 2 or veggies is an empty array
-        if (ingredient2.length === 0 && veggies.length === 0) {
-            message = "You don't have enough ingredients to make a sandwich, sir."
-            return message;
-        }
+      // if there are veggies, add to sandwich
+      if (veggies.length > 0) {
+          message = message + ' ' + veggies.join(', ');
+      }
 
-        // tell user what sandwich is being made
-        message = 'Mmmm about to eat a ' + ingredient1;
+      message = message + " sandwich.";
 
-        // if ingredient 2 exists, add to sandwich
-        if (ingredient2.length > 0) {
-            message = message + ' ' + ingredient2.join(', ');
-        }
+      // if the message is not an empty string, return a message
+      return message == '' ? 'No dude you can\'t make a sandwich' : message;
+  }
+  ```
 
-        // if there are veggies, add to sandwich
-        if (veggies.length > 0) {
-            message = message + ' ' + veggies.join(', ');
-        }
+##### Some notes on this thing:
+- First, sorry!
+- The function name and arguments are not very descriptive. Is sandwich even a verb??? WTF is ingredient2???
+- All of the conditionals you see were 'conditional' on our understanding of the parameters needed for the function to succeed. **tldr; We started with one, and quickly ballooned into this tangled web of logic.**
+- While this function returns a slew of "useful" error messages, the basic question of "can i make a sandwich" does not require such verbose treatment. **tldr; KEEP IT SIMPLE**
+- The first fifteen some odd lines of conditionals in this function were accomplished in FOUR in the first function. This was done by creating readable, boolean variables to keep track of the essential information needed to run the function.
+- By using poorly named variables and doing explicit checks in a sequence of if/else conditionals, it is very easy to lost context for what is happening.
+- Assembling the message over multiple lines means that any future updates to the output of this function will most likely break the meaning.
+- Many return statements makes it difficult to tell when/if the function will stop executing and what will happen when it does.
+- Comments! The comments in this function do not add any value, mostly describing the exact code that follows. Sometimes not even that :)
 
-        message = message + " sandwich.";
 
-        // if the message is not an empty string, return a message
-        return message == '' ? 'No dude you can\'t make a sandwich' : message;
-    }
-    ```
-
-    - Some notes on this thing:
-        - First, sorry!
-        - The function name and arguments are not very descriptive. Is sandwich even a verb??? WTF is ingredient2???
-        - All of the conditionals you see were 'conditional' on our understanding of the parameters needed for the function to succeed. **tldr; We started with one, and quickly ballooned into this tangled web of logic.**
-        - While this function returns a slew of "useful" error messages, the basic question of "can i make a sandwich" does not require such verbose treatment. **tldr; KEEP IT SIMPLE**
-        - The first fifteen some odd lines of conditionals in this function were accomplished in FOUR in the first function. This was done by creating readable, boolean variables to keep track of the essential information needed to run the function.
-        - By using poorly named variables and doing explicit checks in a sequence of if/else conditionals, it is very easy to lost context for what is happening.
-        - Assembling the message over multiple lines means that any future updates to the output of this function will most likely break the meaning.
-        - Many return statements makes it difficult to tell when/if the function will stop executing and what will happen when it does.
-        - Comments! The comments in this function do not add any value, mostly describing the exact code that follows. Sometimes not even that :)
-
-## <a name="HTML"></a> HTML
-- #### <a name="SemanticTags"></a> Semantic Tags:
+## HTML <a name="html"></a>
+### Semantic Tags <a name="html-semantic"></a>
 Use semantic tags in the way they were intended!  
-Here is a brief glossary of terms:
 
-    ```html
-    <section>
+#### HTML Tag Glossary <a name="html-glossary"></a>
+<dl>
+    <dt>&lt;section&gt;</dt>
+        <dd> A meaningful division of content - every major group of content in between a header and footer</dd>
+    <dt>&lt;header&gt;</dt>
+        <dd>The header for a section</dd>
+    <dt>&lt;footer&gt;</dt>
+        <dd>The footer for a section</dd>
+    <dt>&lt;article&gt;</dt>
+        <dd>A full article</dd>
+    <dt>&lt;nav&gt;</dt>
+        <dd>Navigation! Main site navigation, contextual navigation - used for accessing site contents</dd>
+    <dt>&lt;aside&gt;</dt>
+        <dd>Elements that exist outside of the normal page flow/reading flow. Sidebars, related content, etc.</dd>
+    <dt>&lt;cite&gt;</dt>
+        <dd>A citation - used for references or bylines</dd>
+    <dt>&lt;figure&gt;</dt>
+        <dd>An image, illustration, or graph that is used as a meaningful piece of content</dd>
+    <dt>&lt;figcaption&gt;</dt>
+        <dd>The contextual caption for a `<figure>`</dd>
+</dl>
 
-    - A meaningful division of content - every major group
-    of content in between a header and footer
-    ```
 
-    ```html
-    <header>
+#### Example
+Markup using semantic tags:
 
-    - The header for a section
-    ```
+```html
+<!-- EXAMPLE MARKUP -->
+<section class="recent-articles">
+    <header>Most Recent Article</header>
 
-    ```html
-    <footer>
-
-    - The footer for a section
-    ```
-
-    ```html
-    <article>
-
-    - A full article
-    ```
-
-    ```html
     <nav>
+        <a href="#allthearticles">Load all articles</a>
+    </nav>
 
-    - Navigation! Main site navigation, contextual navigation -
-    used for accessing site contents
-    ```
-
-    ```html
-    <aside>
-
-    - Elements that exist outside of the normal page
-    flow/reading flow. Sidebars, related content, etc.
-    ```
-
-    ```html
-    <cite>
-
-    - A citation- used for references or bylines
-    ```
-
-    ```html
-    <figure>
-
-    - An image, illustration, or graph that is used as
-    a meaningful piece of content
-    ```
-
-    ```html
-    <figcaption>
-
-    - The contextual caption for a <figure>
-    ```
-
-- Example markup using semantic tags:
-
-    ```html
-    <!-- EXAMPLE MARKUP -->
-    <section class="recent-articles">
-        <header>Most Recent Article</header>
-
-        <nav>
-            <a href="#allthearticles">Load all articles</a>
-        </nav>
-
-        <article>
-            <h2>The Most Important Article</h2>
-
-            <figure>
-                <img src="/someimage.jpg" />
-
-                <figcaption>Fig. 1 - This image explains everything!</figcaption>
-            </figure>
-
-            <cite>By Antonio Banderas</cite>
-
-            <p>
-                This is the article copy. It's pretty short because
-                this is an example, and not for the internet at large.
-                Remember, words are important!
-            </p>
-        </article>
-
-        <footer>
-            <a href="#signup">Sign up for our newsletter!</a>
-        </footer>
-    </section>
-    ```
-
-- #### <a name="StructuralElements"></a> Structural Elements
-    It is sometimes necessary to wrap HTML in tags that are structural, and have no direct impact on the content presented.
-    This is totally fine, but keep it clean!
-
-    In the example below, we have a UI that contains two buttons and a paragraph
-    of text that is output based on some kind of user interaction. On a small screen (or small space), the buttons and
-    the output text can stack vertically (think, display: block down the page).
-
-    On a larger screen, however, we may want these groups of elements to go 50/50 to better occupy screen real-estate.
-
-    In this type of case, we can semantically divide our html into two "ui-group"s, allowing us the flexibility required to make a nice app.
-
-    ```html
-    <section class="admin-tool">
-        <div class="ui-group">
-            <button>Button 1</button>
-            <button>Button 2</button>
-        </div>
-
-        <div class="ui-group">
-            <p>
-                This is a read-out of some kind of
-                admin tool. Clicking those buttons
-                affects the text!
-            </p>
-            <a href="#reload">Reload That Text!</a>
-        </div>
-    </section>
-    ```
-
-- #### <a name="DataAttributes"></a> Data Attributes
-    - Data attributes should be used to provide information to JavaScript to initialize or operate on that portion of the DOM. For instance, consider this fictional example that loads 20 comments from a particular service. At a high-level, all that is required to make the service calls are an **id** and a **count** for number of comments.
-
-    ```html
-    <div class="comments" data-comment-id="jks34" data-comment-count="20">
-        ...
-    </div>
-    ```
-
-    - In special cases, data attributes can be used for CSS display values. Consider this example:
-    ```html
-    <div class="city--label" data-city-name="Houston, TX"></div>
-
-    <style>
-        .city--label:before {
-            content: attr(data-city-name);
-        }
-    </style>
-    ```
-- #### <a name="IDs"></a> ID's
-    - Use ID's sparingly! Make sure there is only one per document! And never style them ;)
-
-- #### <a name="Syntax"></a> Syntax
-    - **Always** use semantic tags!
-    - **Always** use doublequotes for attributes!
-    - **Always** use proper indentation (keep your structure sane!)
-    - **Always** make your HTML human-readable
-    - **Never** use an #ID for styling hooks
-    - **Never** use **tables** for layout
-    - Closing `<li>` elements.
-      `<li>` elements should not be closed. [Further reading on this inline-block
-      issue.][inline]
-    - Each new tag should exist on its own line!
-    ```html
-    <!-- BAD! NO! -->
-    <div class="thing">
-        <section><h1>Title</h1>
-        <a href="thing">Things are happening <span>here</span></a></section>
-    </div>
-
-    <!-- Ah! Room to breathe, and now the structure is apparent. -->
-    <div class="thing">
-        <section>
-            <h1>Title</h1>
-
-            <a href="thing">
-                Things are happening
-                <span>here</span>
-            </a>
-        </section>
-    </div>
-    ```
-    - Separate independent but loosely related snippets of markup with a single empty line, for example:
-
-        **EXCEPTION:** For inline block styling, items may need to live on the same line. Acceptable
-        deviance is inserting html comments to eliminate the inline-block space.
-
-    ```html
-    <!-- THIS IS FINE, SINCE THESE TITLES AND PARAGRAPH ARE RELATED -->
-    <div class="thing">
-        <h1>Title</h1>
-        <h2>Title 2</h2>
-        <p>Things</p>
-    </div>
-
-    <!-- THIS IS ALSO FINE, GROUPS HEADLINES TOGETHER, AND SEPARATES THE PARAGRAPH -->
-    <div class="thing">
-        <h1>Title</h1>
-        <h2>Title 2</h2>
-
-        <p>Things</p>
-    </div>
-
-    <!-- THIS IS NOT FINE! DISTINGUISHES THESE ELEMENTS UNNECESSARILY -->
-    <div class="thing">
-
-        <h1>Title</h1>
-
-        <h2>Title 2</h2>
-
-        <p>Things</p>
-
-    </div>
-
-    <!-- SEPARATES LARGER "CHUNKS" OF HTML FOR EASE OF TRACKING -->
-    <div class="thing">
-        <nav>
-            <a href="#">Link 1</a>
-            <a href="#">Link 2</a>
-        </nav>
-
-        <h2>Title</h2>
+    <article>
+        <h2>The Most Important Article</h2>
 
         <figure>
-            <img src="image.jpg"/>
-            <figcaption>Caption for the image</figcaption>
-        </figure>
-    </div>
-    ```
+            <img src="/someimage.jpg" />
 
-## <a name="CSS"></a> CSS / SASS
-0. The CSS / Sass guidelines are based off of [csswizardry/CSS-Guidelines][css].
+            <figcaption>Fig. 1 - This image explains everything!</figcaption>
+        </figure>
+
+        <cite>By Antonio Banderas</cite>
+
+        <p>
+            This is the article copy. It's pretty short because
+            this is an example, and not for the internet at large.
+            Remember, words are important!
+        </p>
+    </article>
+
+    <footer>
+        <a href="#signup">Sign up for our newsletter!</a>
+    </footer>
+</section>
+```
+
+### Structural Elements <a name="html-structure"></a>
+It is sometimes necessary to wrap HTML in tags that are structural, and have no direct impact on the content presented.
+
+This is totally fine, but keep it clean!
+
+In the example below, we have a UI that contains two buttons and a paragraph of text that is output based on some kind of user interaction. On a small screen (or small space), the buttons and the output text can stack vertically (think, display: block down the page).
+
+On a larger screen, however, we may want these groups of elements to go 50/50 to better occupy screen real-estate.
+
+In this type of case, we can semantically divide our html into two "ui-group"s, allowing us the flexibility required to make a nice app.
+
+```html
+<section class="admin-tool">
+    <div class="ui-group">
+        <button>Button 1</button>
+        <button>Button 2</button>
+    </div>
+
+    <div class="ui-group">
+        <p>
+            This is a read-out of some kind of
+            admin tool. Clicking those buttons
+            affects the text!
+        </p>
+        <a href="#reload">Reload That Text!</a>
+    </div>
+</section>
+```
+
+### Data Attributes <a name="html-data-attributes"></a>
+Data attributes should be used to provide information to JavaScript to initialize or operate on that portion of the DOM. For instance, consider this fictional example that loads 20 comments from a particular service. At a high-level, all that is required to make the service calls are an **id** and a **count** for number of comments.
+
+```html
+<div class="comments" data-comment-id="jks34" data-comment-count="20">
+    ...
+</div>
+```
+
+In special cases, data attributes can be used for CSS display values. Consider this example:
+```html
+<div class="city--label" data-city-name="Houston, TX"></div>
+
+<style>
+    .city--label:before {
+        content: attr(data-city-name);
+    }
+</style>
+```
+
+### ID's <a name="html-ids"></a>
+Use ID's sparingly! Make sure there is only one per document! And never style them ;)
+
+
+### Syntax <a name="html-syntax"></a>
+- **Always** use semantic tags!
+- **Always** use doublequotes for attributes!
+- **Always** use proper indentation (keep your structure sane!)
+- **Always** make your HTML human-readable
+- **Never** use an #ID for styling hooks
+- **Never** use **tables** for layout
+- Closing `<li>` elements.
+  `<li>` elements should not be closed. [Further reading on this inline-block
+  issue.][inline]
+- Each new tag should exist on its own line!
+
+  ```html
+  <!-- BAD! NO! -->
+  <div class="thing">
+      <section><h1>Title</h1>
+      <a href="thing">Things are happening <span>here</span></a></section>
+  </div>
+
+  <!-- Ah! Room to breathe, and now the structure is apparent. -->
+  <div class="thing">
+      <section>
+          <h1>Title</h1>
+
+          <a href="thing">
+              Things are happening
+              <span>here</span>
+          </a>
+      </section>
+  </div>
+  ```
+- Separate independent but loosely related snippets of markup with a single empty line, for example:
+
+    **EXCEPTION:** For inline block styling, items may need to live on the same line. Acceptable
+    deviance is inserting html comments to eliminate the inline-block space.
+
+  ```html
+  <!-- THIS IS FINE, SINCE THESE TITLES AND PARAGRAPH ARE RELATED -->
+  <div class="thing">
+      <h1>Title</h1>
+      <h2>Title 2</h2>
+      <p>Things</p>
+  </div>
+
+  <!-- THIS IS ALSO FINE, GROUPS HEADLINES TOGETHER, AND SEPARATES THE PARAGRAPH -->
+  <div class="thing">
+      <h1>Title</h1>
+      <h2>Title 2</h2>
+
+      <p>Things</p>
+  </div>
+
+  <!-- THIS IS NOT FINE! DISTINGUISHES THESE ELEMENTS UNNECESSARILY -->
+  <div class="thing">
+
+      <h1>Title</h1>
+
+      <h2>Title 2</h2>
+
+      <p>Things</p>
+
+  </div>
+
+  <!-- SEPARATES LARGER "CHUNKS" OF HTML FOR EASE OF TRACKING -->
+  <div class="thing">
+      <nav>
+          <a href="#">Link 1</a>
+          <a href="#">Link 2</a>
+      </nav>
+
+      <h2>Title</h2>
+
+      <figure>
+          <img src="image.jpg"/>
+          <figcaption>Caption for the image</figcaption>
+      </figure>
+  </div>
+  ```
+
+## CSS/SASS <a name="css"></a>
+0. The CSS/Sass guidelines are based off of [csswizardry/CSS-Guidelines][css].
 0. We use [normalize.css][normalize] as our style reset.
 0. <a name="BEM"></a> We favor BEM (Block Element Modifier) syntax where possible, and the wonderfully flat selector structure this gives us.
-    - Blocks
     ```css
+    /* Block */
     .article {
         font-size: 1em;
     }
 
+    /* Modifier */
     .article--video {
         /* some video article styles */
     }
-    ```
-    - Elements
-    ```css
+
+    /* Element */
     .article__title {
         font-size: 3em;
     }
 
+    /* Element */
     .article__byline {
         color: #c00;
         font-size: .8em;
@@ -584,8 +571,9 @@ Here is a brief glossary of terms:
     }
     ```
 
-### Guidelines
-- <a name="MobileFirst"></a> Default styling must be mobile/small-sized first.
+### CSS Guidelines <a name="css-guidelines"></a>
+#### Mobile First <a name="css-mobile-first"></a>
+Default styling must be mobile/small-sized first.
 ```css
 /* Poor */
 .class {
@@ -607,7 +595,12 @@ Here is a brief glossary of terms:
 }
 ```
 
-- <a name="SeparateStructure"></a> Separate structural properties from visual properties using scoped mixins. This will allow us to easily swap visual appearance of elements without needing to override css definitions, and helps us think about skinning properties vs layout properties. This format also serves as a self-documenting table of contents.
+#### Structure <a name="css-structure"></a>
+Separate structural properties from visual properties using scoped mixins. This will allow us to easily swap visual appearance of elements without needing to override css definitions, and helps us think about skinning properties vs layout properties. This format also serves as a self-documenting table of contents.
+
+For this to work, define a mixin within a class definition. Immediately after, include the mixin.
+
+This may seem redundant, however, it helps us think about skinning properties vs layout properties.
 
 ```sass
 // Color Vars
@@ -678,6 +671,8 @@ $robot-titanium: #ddd;
 }
 ```
 
+
+#### CSS Properties List <a name="css-properties-list"></a>
 Here's a list of structural properties vs visual properties:
 
 | Structural | Visual     |
