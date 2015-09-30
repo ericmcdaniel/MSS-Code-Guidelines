@@ -188,7 +188,7 @@ this._things = 'private';
 
 
 #### <a name="js-naming"></a> Naming
-Use camel-case for variable and function names
+Use camelCase for variable and function names
 ```javascript
 var thisVariableIsCamelCase = true;
 
@@ -197,6 +197,17 @@ function doSomethingGreat(isGreat) {
         alert('Pretty good!');
     }
 }
+```
+
+Use [PascalCase](http://c2.com/cgi/wiki?PascalCase) for constructor functions and classes.
+```javascript
+function DoSomethingGreat(isGreat) {
+    if (isGreat) {
+        alert('Pretty good!');
+    }
+}
+
+var greatThings = new DoSomethingGreat(true);
 ```
 
 Be descriptive with your function and variable names!
@@ -227,7 +238,6 @@ Use JSDoc-style comments to describe methods and functionality
  * @param {String} tag
  * @return {Element} element
  */
-
 function make(tag) {
     // some code
     return element;
@@ -353,23 +363,23 @@ Use semantic tags in the way they were intended!
 
 #### <a name="html-glossary"></a> HTML Tag Glossary
 <dl>
-    <dt>&lt;section&gt;</dt>
+    <dt>`section`</dt>
         <dd> A meaningful division of content - every major group of content in between a header and footer</dd>
-    <dt>&lt;header&gt;</dt>
+    <dt>`header`</dt>
         <dd>The header for a section</dd>
-    <dt>&lt;footer&gt;</dt>
+    <dt>`footer`</dt>
         <dd>The footer for a section</dd>
-    <dt>&lt;article&gt;</dt>
+    <dt>`article`</dt>
         <dd>A full article</dd>
-    <dt>&lt;nav&gt;</dt>
+    <dt>`nav`</dt>
         <dd>Navigation! Main site navigation, contextual navigation - used for accessing site contents</dd>
-    <dt>&lt;aside&gt;</dt>
+    <dt>`aside`</dt>
         <dd>Elements that exist outside of the normal page flow/reading flow. Sidebars, related content, etc.</dd>
-    <dt>&lt;cite&gt;</dt>
+    <dt>`cite`</dt>
         <dd>A citation - used for references or bylines</dd>
-    <dt>&lt;figure&gt;</dt>
+    <dt>`figure`</dt>
         <dd>An image, illustration, or graph that is used as a meaningful piece of content</dd>
-    <dt>&lt;figcaption&gt;</dt>
+    <dt>`figcaption`</dt>
         <dd>The contextual caption for a `<figure>`</dd>
 </dl>
 
@@ -468,12 +478,12 @@ Use ID's sparingly! Make sure there is only one per document! And never style th
 - **Always** use doublequotes for attributes!
 - **Always** use proper indentation (keep your structure sane!)
 - **Always** make your HTML human-readable
+- **Always** put each new tag on its own line
 - **Never** use an #ID for styling hooks
-- **Never** use **tables** for layout
-- Closing `<li>` elements.
+- **Never** use `table`s for layout. It's not 1999, this shouldn't be news. Tables are great for tabular data, though.
+- **Never** close `<li>` elements.
   `<li>` elements should not be closed. [Further reading on this inline-block
   issue.](http://css-tricks.com/fighting-the-space-between-inline-block-elements/)
-- Each new tag should exist on its own line!
 
   ```html
   <!-- BAD! NO! -->
@@ -750,8 +760,8 @@ ECMAScript 6 code.
 ### <a name="Authors"></a> Authors
 - James Young [@jamsyoung](http://twitter.com/jamsyoung), [github](https://github.com/jamsyoung)
 - Matt Crutchfield [@mtcrutch](https://twitter.com/mtcrutch), [github](https://github.com/mtcrutch)
-- Christian Hain [github](https://github.com/mtcrutch)
-- Paul Borrego [github](https://github.com/mtcrutch)
+- Christian Hain [github](https://github.com/crhain88)
+- Paul Borrego [github](https://github.com/pborrego)
 - Chris Gonzalez [github](https://github.com/chrisgonzalez)
 
 ### <a name="HelpfulLinks"></a> Helpful Links
