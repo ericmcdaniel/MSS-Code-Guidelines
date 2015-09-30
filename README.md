@@ -614,78 +614,77 @@ Here is a brief glossary of terms:
     of contents.
 
 ```sass
+//
+// COLOR VARS
+//
 
-    //
-    // COLOR VARS
-    //
+$robot-black: #121212;
+$robot-gold: gold;
+$robot-titanium: #ddd;
 
-    $robot-black: #121212;
-    $robot-gold: gold;
-    $robot-titanium: #ddd;
+//
+// Robot Component
+//
 
-    //
-    // Robot Component
-    //
+.robot {
+    @extend %robot-structure;
+    @extend %robot-visual;
+    @extend %robot-theme;
+}
 
-    .robot {
-        @extend %robot-structure;
-        @extend %robot-visual;
-        @extend %robot-theme;
-    }
+.robot__head {
+    @extend %robot__head-structure;
+    @extend %robot__head-visual;
+    @extend %robot__head-theme;
+}
 
-    .robot__head {
-        @extend %robot__head-structure;
-        @extend %robot__head-visual;
-        @extend %robot__head-theme;
-    }
+.robot--spacerobot {
+    @extend %robot--spacerobot-theme;
+}
 
-    .robot--spacerobot {
-        @extend %robot--spacerobot-theme;
-    }
+//
+// Robot Block Styles
+//
 
-    //
-    // Robot Block Styles
-    //
+%robot-structure {
+    display: block;
+    height: 60px;
+    width: 100px;
+}
 
-    %robot-structure {
-        display: block;
-        height: 60px;
-        width: 100px;
-    }
+%robot-visual {
+    box-shadow: 2px 2px 2px rgba(255,0,0,.6);
+    transform: translateZ(1000px);
+}
 
-    %robot-visual {
-        box-shadow: 2px 2px 2px rgba(255,0,0,.6);
-        transform: translateZ(1000px);
-    }
+%robot-theme {
+    background-color: $robot-titanium;
+    border: 1px solid $robot-gold;
+}
 
-    %robot-theme {
-        background-color: $robot-titanium;
-        border: 1px solid $robot-gold;
-    }
+//
+// Robot Element Styles
+//
 
-    //
-    // Robot Element Styles
-    //
+%robot__head-structure {
+    display: block;
+}
 
-    %robot__head-structure {
-        display: block;
-    }
+%robot__head-visual {
+    border-radius: 1000px;
+}
 
-    %robot__head-visual {
-        border-radius: 1000px;
-    }
+%robot__head-theme {
+    background-color: $robot-black;
+}
 
-    %robot__head-theme {
-        background-color: $robot-black;
-    }
+//
+// Robot Modifier Styles
+//
 
-    //
-    // Robot Modifier Styles
-    //
-
-    %robot--spacerobot-theme {
-        background: url(/images/spacegraphic.png) repeat top left;
-    }
+%robot--spacerobot-theme {
+    background: url(/images/spacegraphic.png) repeat top left;
+}
 ```
 
 Here's a list of structural properties vs visual properties:
