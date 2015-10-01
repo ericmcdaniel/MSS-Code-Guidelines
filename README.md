@@ -35,7 +35,6 @@ but also a tool for learning for all future developers!
 - [Contributing!](#Contributors)
 - [Conflict Resolution](#ConflictResolution)
 - [Included Files](#IncludedFiles)
-- [Authors](#Authors)
 - [Helpful Links](#HelpfulLinks)
 
 ## <a name="js"></a> JavaScript
@@ -140,7 +139,7 @@ return obj;
 
 Use only one variable declaration, at the top of your function. Chain together with commas
 
-*Why?* Your functions should be short, and keeping the vars in one place is a good way to keep inventory as you read the function.
+*Why?* Your functions should be short, and keeping the vars in one place is a good way to keep inventory as you read the function. Additionally, JavaScript will hoist all variable declarations in a scoped block to the top of the block anyway. For more information on hoisting, check out [AirBnB's awesome writeup](https://github.com/airbnb/javascript#hoisting).  
 
 ```javascript
 function doTwoThings() {
@@ -756,13 +755,6 @@ code.
 
 - **.jshintrc-node-es6**: A JS Hint config file for NodeJS 0.11.x+ and IO.js
 ECMAScript 6 code.
-
-### <a name="Authors"></a> Authors
-- James Young [@jamsyoung](http://twitter.com/jamsyoung), [github](https://github.com/jamsyoung)
-- Matt Crutchfield [@mtcrutch](https://twitter.com/mtcrutch), [github](https://github.com/mtcrutch)
-- Christian Hain [github](https://github.com/crhain88)
-- Paul Borrego [github](https://github.com/pborrego)
-- Chris Gonzalez [github](https://github.com/chrisgonzalez)
 
 ### <a name="HelpfulLinks"></a> Helpful Links
 
