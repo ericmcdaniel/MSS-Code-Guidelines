@@ -3,6 +3,7 @@ Version 1.3.0
 
 ![I honestly didn't think you could even USE emoji in variable names. Or that there were so many different crying ones.](http://imgs.xkcd.com/comics/code_quality.png)
 
+<<<<<<< HEAD
 ## About these guidelines
 
 The central goal of this document is to create readable, consistent code across
@@ -33,6 +34,7 @@ but also a tool for learning for all future developers!
         - [CSS Properties List](#css-properties-list)
 - [Markdown](#Markdown)
 - [Contributing!](#Contributors)
+- [LoggingLevels!](#LoggingLevels)
 - [Conflict Resolution](#ConflictResolution)
 - [Included Files](#IncludedFiles)
 - [Helpful Links](#HelpfulLinks)
@@ -732,12 +734,139 @@ discuss it or *create a [pull request](https://github.com/TurnerBroadcasting/MTS
 will occur on that PR.  Also review the [contributing guidelines](https://github.com/TurnerBroadcasting/mss-code-guidelines/blob/master/CONTRIBUTING.md).
 
 ## <a name="ConflictResolution"></a> Conflict Resolution
-We have included [JSHint](https://github.com/jshint/jshint/) and [JSCS](https://github.com/mdevils/node-jscs) RC files in this repository
+
+We have included [JSHint][jshint] and [JSCS][jscs] RC files in this repository
 to validate javascript code against these guidelines.  When something is
 questioned, these files will always win.  When in doubt, run JSHint and JSCS
 with the `.jshintrc` and `.jscsrc` files in place and see if they find any
 problems.  It is recommended that you find plugins for your editor of choice to
 always validate your code against these files.
+
+### Regarding the multiple suffixed files
+There are several `.jscs` and `.jshintrc` files with suffixes in this repo.  It
+is up to you to choose the most appropriate one for your project.  Hopefully the
+suffixes are clear, but just in case, here are some more details.
+
+- **.jscs**: A JavaScript Code Style config file for ECMAScript 5 code.
+
+- **.jscs-es6**: A JavaScript Code Style config file for ECMAScript 6 code.
+
+- **.jshintrc-browser**: A JS Hint config file for browser based ECMAScript 5
+  code.
+
+- **.jshintrc-node**: A JS Hint config file for NodeJS 0.10.x ECMAScript 5 code.
+
+- **.jshintrc-node-es6**: A JS Hint config file for NodeJS 0.11.x+ and IO.js
+  ECMAScript 6 code.
+
+
+## <a name="LoggingLevels"></a> Logging Levels
+
+This is intended to be a short developer note on guidance for logging levels.
+Exception handlers should log exceptions.
+
+
+### Background
+
+A brief synopsis of why we log and the implications for logging levels.
+
+- Hunt down bugs
+
+- Enable automated monitoring for errors and warnings and/or trigger Hipchat
+  alerts
+
+- Maintain an audit trail
+
+- Record application status
+
+- Debugging configuration issues
+
+
+#### IMPORTANT
+
+- Used sparingly
+
+- Used on production
+
+- Example: System start/restart
+
+
+#### FATAL
+
+- Used for recording a failure that prevents system from starting or shuts down
+  an application
+
+- Used on production
+
+- Triggers a DOC alert
+
+- Example: Systems becomes unusable
+
+
+#### ERROR
+
+- Records when failure occurs but system is stll usable
+
+- Used on production
+
+- Triggers a DOC alert
+
+- Example: PAL errors talking to IBIS
+
+
+#### WARNING
+
+- A scenario that indicates something is wrong with the system but does not
+  prevent system from operating correctly
+
+- Used on production
+
+- Monitored and triggers DOC if defined levels exceeded
+
+- Example: Invalid login attempts
+
+
+#### INFO
+
+- General system status— Does not indicate something is wrong
+
+- Used on production
+
+- Should be able to be enabled in production
+
+- Example: Reestablish connection to external service
+
+
+#### DEBUG
+
+- Enables developer context (stack trace and/or other context of issue) for
+  debugging a problem
+
+- Should not be used in production for performance as well as security reasons.
+
+- Example: Null pointer exception
+
+
+#### VERBOSE
+
+- Should be used for capturing detailed implementation and diagnostic level
+  detail that you might want to enable in rare situations (a more verbose INFO)
+
+- Not used in production
+
+- Touch base with your Tech Lead for this level of logging
+
+
+#### SILLY
+
+- Should be used for capturing very detailed implementation and diagnostic level
+  detail that you might want to enable in very rare situations (a more verbose
+  DEBUG)
+
+- Not used in production
+
+- Touch base with your Tech Lead for this level of logging
+
 
 ### <a name="IncludedFiles"></a> Regarding the multiple suffixed files
 There are several `.jscs` and `.jshintrc` files with suffixes in this repo.  It
