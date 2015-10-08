@@ -1,4 +1,7 @@
 ## Changelog
+### 2.0.0
+  - Major refactor of the guidelines
+
 ### 1.3.0
   - Added a CONTRIBUTING.md file that details how to structure Git commits in a
     Conventional ChangeLog format.
