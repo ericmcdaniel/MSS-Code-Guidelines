@@ -1,9 +1,8 @@
 # MTS Code Guidelines
-Version 1.3.0
+Version 2.0.0 
 
 ![I honestly didn't think you could even USE emoji in variable names. Or that there were so many different crying ones.](http://imgs.xkcd.com/comics/code_quality.png)
 
-<<<<<<< HEAD
 ## About these guidelines
 
 The central goal of this document is to create readable, consistent code across
