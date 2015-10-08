@@ -12,7 +12,7 @@ linters:
         severity: error
 
     DeclarationOrder:
-        severity: error
+        severity: warning
 
     DuplicateProperty:
         severity: warning
@@ -30,10 +30,10 @@ linters:
         severity: error
 
     HexLength:
-        severity: error
+        severity: warning
 
     Indentation:
-        severity: error
+        severity: warning
         width: 4
 
     LeadingZero:
@@ -47,14 +47,14 @@ linters:
         enabled: false
 
     PropertySortOrder:
-        severity: error
+        severity: warning
 
     SelectorDepth:
         severity: warning
-        max_depth: 3
+        max_depth: 4
 
     Shorthand:
-        severity: error
+        severity: warning
 
     SingleLinePerSelector:
         severity: error
