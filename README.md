@@ -127,7 +127,7 @@ return obj;
 // good
 var obj = {
     foo() {
-       },
+    },
 
     bar() {
     },
@@ -558,29 +558,29 @@ Use ID's sparingly! Make sure there is only one per document! And never style th
 0. <a name="BEM"></a> We favor BEM (Block Element Modifier) syntax where possible, and the wonderfully flat selector structure this gives us.
 
 ### <a name="css-bem"> BEM
-    ```css
-    /* Block */
-    .article {
-        font-size: 1em;
-    }
+```css
+/* Block */
+.article {
+    font-size: 1em;
+}
 
-    /* Modifier */
-    .article--video {
-        /* some video article styles */
-    }
+/* Modifier */
+.article--video {
+    /* some video article styles */
+}
 
-    /* Element */
-    .article__title {
-        font-size: 3em;
-    }
+/* Element */
+.article__title {
+    font-size: 3em;
+}
 
-    /* Element */
-    .article__byline {
-        color: #c00;
-        font-size: .8em;
-        font-weight: bold;
-    }
-    ```
+/* Element */
+.article__byline {
+    color: #c00;
+    font-size: .8em;
+    font-weight: bold;
+}
+```
 
 ### <a name="css-guidelines"></a> CSS Guidelines
 #### <a name="css-mobile-first"></a> Mobile First
